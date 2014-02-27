@@ -20,6 +20,7 @@ Bundle 'davidhalter/jedi-vim'
 Bundle 'scrooloose/syntastic'
 Bundle 'groenewege/vim-less'
 Bundle 'hynek/vim-python-pep8-indent'
+Bundle 'bling/vim-airline'
 
 " Map Leader
 let mapleader=","

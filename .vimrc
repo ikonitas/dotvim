@@ -75,10 +75,6 @@ map <F9> :setlocal spell! spelllang=en_us<CR>
 noremap <Space> za
 " Esc
 :imap jj <Esc>
-" Save
-:nmap <c-s> :w<CR>
-:imap <c-s> <Esc>:w<CR>a
-:imap <c-s> <Esc><c-s>
 
 
 """""""""

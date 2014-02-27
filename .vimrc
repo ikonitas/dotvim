@@ -22,7 +22,7 @@ Bundle 'groenewege/vim-less'
 Bundle 'hynek/vim-python-pep8-indent'
 
 " Map Leader
-let mapleader="," " Settings map leader
+let mapleader=","
 
 """"""""""""
 " COMMANDS "
@@ -37,8 +37,6 @@ cmap w!! w !sudo tee > /dev/null %
 nmap <leader>a <Esc>:Ack --ignore-dir=migrations --type-set=DUMB="*.pyc" --nobreak --noenv -i -Q 
 " Set working directory
 nnoremap <leader>. :lcd %:p:h<CR>  	
-" Don't outdent hashes
-inoremap # #                            
 " <Ctrl-l> redraws the screen and removes any search highlighting.
 nmap <C-l> :nohlsearch<CR>              
 " Disable up keyboard

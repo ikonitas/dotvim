@@ -40,11 +40,6 @@ nmap <leader>a <Esc>:Ack --ignore-dir=migrations --type-set=DUMB="*.pyc" --nobre
 nnoremap <leader>. :lcd %:p:h<CR>  	
 " <Ctrl-l> redraws the screen and removes any search highlighting.
 nmap <C-l> :nohlsearch<CR>              
-" Disable up keyboard
-nnoremap <up> <nop>                     
-nnoremap <down> <nop>                   
-nnoremap <left> <nop>                   
-nnoremap <right> <nop>                  
 " Switch between bufers
 nmap <C-e> :e#<CR> 			
 " SWitch to next buffer

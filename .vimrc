@@ -33,7 +33,7 @@ command W :w
 command Wq wq
 command WQ wq
 " Sudo write this
-cmap w!! w !sudo tee > /dev/null % 	
+cmap w!! w !sudo tee %
 " ACK searching
 nmap <leader>a <Esc>:Ack --ignore-dir=migrations --type-set=DUMB="*.pyc" --nobreak --noenv -i -Q 
 " Set working directory

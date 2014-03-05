@@ -157,7 +157,8 @@ set dir=/tmp
 """"""""
 " HTML "
 """"""""
-autocmd FileType html,xhtml,xml,css,less,javascript setlocal expandtab shiftwidth=2 tabstop=2 softtabstop=2
+autocmd FileType xhtml,xml,css,less,javascript setlocal expandtab shiftwidth=2 tabstop=2 softtabstop=2
+au FileType html,htmldjango setlocal shiftwidth=2 tabstop=2 softtabstop=2
 
 """"""""""
 " PYTHON "

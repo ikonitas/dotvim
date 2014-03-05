@@ -157,8 +157,7 @@ set dir=/tmp
 """"""""
 " HTML "
 """"""""
-autocmd FileType html,xhtml,xml,css,less setlocal expandtab shiftwidth=2 tabstop=2 softtabstop=2
-autocmd BufNewFile,BufRead *.html setlocal expandtab shiftwidth=2 tabstop=2 softtabstop=2
+autocmd FileType html,xhtml,xml,css,less,javascript setlocal expandtab shiftwidth=2 tabstop=2 softtabstop=2
 
 """"""""""
 " PYTHON "

@@ -51,7 +51,7 @@ nmap <leader>f :CtrlP
 nmap ]l :ll<Cr>
 nmap [l :ll<Cr>
 " Display error flake 8
-nmap <F7> :Errors<Cr>
+nmap <F7> :SyntasticCheck<Cr>
 " Toggle lines numbers
 :nmap \l :setlocal number!<CR> 		
 " Toggles paste mode

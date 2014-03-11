@@ -48,10 +48,10 @@ nmap <C-n> :bnext<CR>
 nmap <C-p> :bprev<CR>   		
 nmap <leader>f :CtrlP 
 " Syntastic go to next errors
-nmap [l :lnext<Cr>
-nmap ]l :lprevious<Cr>
+nmap ]l :ll<Cr>
+nmap [l :ll<Cr>
 " Display error flake 8
-nmap <F7> :Errors<Cr>
+nmap <F7> :SyntasticCheck<Cr>
 " Toggle lines numbers
 :nmap \l :setlocal number!<CR> 		
 " Toggles paste mode

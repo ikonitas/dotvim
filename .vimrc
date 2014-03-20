@@ -163,7 +163,7 @@ au FileType html,htmldjango setlocal shiftwidth=2 tabstop=2 softtabstop=2
 """"""""""
 " PYTHON "
 """"""""""
-au FileType python setlocal expandtab smarttab shiftwidth=4 tabstop=4 textwidth=80 softtabstop=4
+au FileType python setlocal expandtab smarttab shiftwidth=4 tabstop=4 textwidth=80 softtabstop=4 colorcolumn=80
 
 "Remove trailing hitespaces"
 autocmd BufWritePre *.css :%s/\s\+$//e
@@ -191,13 +191,7 @@ autocmd BufWinEnter * call ResCur()
 augroup END
 """"""""""""""""""""""""""""""""""""""""""
 
-" show a line at column 80 """""""""""""""
-if exists("&colorcolumn")
-set colorcolumn=80
-endif
-""""""""""""""""""""""""""""""""""""""""""
-
-" Insert IPDB """"""""""""""""""
+" Insert IPDB """""""""""""""""
 function! Class()
 r~/.vim/txt/ipdb.txt
 endfunction

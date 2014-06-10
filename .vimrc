@@ -160,6 +160,11 @@ set incsearch               	      " Incrementally search while typing a /regex
 set swapfile
 set dir=/tmp
 
+" Disable stupid backups and swap files
+set nobackup
+set nowritebackup
+set noswapfile
+
 """"""""
 " HTML "
 """"""""
@@ -204,4 +209,3 @@ endfunction
 nmap <leader>p :call Class()<CR>
 """"""""""""""""""""""""""""""""
 colorscheme molokai 
-

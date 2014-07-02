@@ -21,6 +21,7 @@ Bundle 'scrooloose/syntastic'
 Bundle 'groenewege/vim-less'
 Bundle 'hynek/vim-python-pep8-indent'
 Bundle 'bling/vim-airline'
+Bundle 'majutsushi/tagbar'
 
 " Map Leader
 let mapleader=","
@@ -65,6 +66,10 @@ nmap <silent> <C-Up> :wincmd k<CR>
 nmap <silent> <C-Down> :wincmd j<CR>
 nmap <silent> <C-Left> :wincmd h<CR>
 nmap <silent> <C-Right> :wincmd l<CR>
+
+" Toggles Tagbar
+nmap <F8> :TagbarToggle<CR>
+
 " Spell check
 map <F9> :setlocal spell! spelllang=en_us<CR>
 " Fold with space

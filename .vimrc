@@ -39,6 +39,13 @@ cmap w!! w !sudo tee %
 nmap <leader>a <Esc>:Ack --ignore-dir=migrations --type-set=DUMB="*.pyc" --nobreak --noenv -i -Q 
 " Set working directory
 nnoremap <leader>. :lcd %:p:h<CR>  	
+
+" Open existing file in Chrome
+nnoremap <F12>c :exe ':silent !google-chrome %'<CR>
+
+" less to css lessc is required
+nnoremap <Leader>m :w <BAR> !lessc % > ../css/%:t:r.css<CR><space>
+
 " <Ctrl-l> redraws the screen and removes any search highlighting.
 nmap <C-l> :nohlsearch<CR>              
 " Switch between bufers

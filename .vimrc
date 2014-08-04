@@ -22,6 +22,7 @@ Bundle 'groenewege/vim-less'
 Bundle 'hynek/vim-python-pep8-indent'
 Bundle 'bling/vim-airline'
 Bundle 'majutsushi/tagbar'
+Bundle 'scrooloose/nerdtree'
 
 " Map Leader
 let mapleader=","
@@ -60,6 +61,9 @@ nmap ]l :lnext<Cr>
 nmap [l :lprev<Cr>
 " Display error flake 8
 nmap <F7> :SyntasticCheck<Cr>
+" Enable NerdTree
+nmap <F3> :NERDTreeToggle<Cr>
+
 " Toggle lines numbers
 :nmap \l :setlocal number!<CR> 		
 " Toggles paste mode

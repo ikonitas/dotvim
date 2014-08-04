@@ -42,7 +42,7 @@ nmap <leader>a <Esc>:Ack --ignore-dir=migrations --type-set=DUMB="*.pyc" --nobre
 nnoremap <leader>. :lcd %:p:h<CR>  	
 
 " Open existing file in Chrome
-nnoremap <F12>c :exe ':silent !google-chrome %'<CR>
+nnoremap <F12>c :exe ':!google-chrome %'<CR>
 
 " less to css lessc is required
 nnoremap <Leader>m :w <BAR> !lessc % > ../css/%:t:r.css<CR><space>

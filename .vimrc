@@ -22,6 +22,7 @@ Bundle 'groenewege/vim-less'
 Bundle 'hynek/vim-python-pep8-indent'
 Bundle 'bling/vim-airline'
 Bundle 'majutsushi/tagbar'
+Bundle 'scrooloose/nerdtree'
 
 " Map Leader
 let mapleader=","
@@ -41,7 +42,7 @@ nmap <leader>a <Esc>:Ack --ignore-dir=migrations --type-set=DUMB="*.pyc" --nobre
 nnoremap <leader>. :lcd %:p:h<CR>  	
 
 " Open existing file in Chrome
-nnoremap <F12>c :exe ':silent !google-chrome %'<CR>
+nnoremap <F12>c :exe ':!google-chrome %'<CR>
 
 " less to css lessc is required
 nnoremap <Leader>m :w <BAR> !lessc % > ../css/%:t:r.css<CR><space>
@@ -59,6 +60,10 @@ nmap <leader>f :CtrlP <CR>
 " Syntastic go to next errors
 nmap ]l :lnext<Cr>
 nmap [l :lprev<Cr>
+
+" Enable NerdTree
+nmap <F3> :NERDTreeToggle<Cr>
+
 " Toggle lines numbers
 :nmap \l :setlocal number!<CR> 		
 " Toggles paste mode

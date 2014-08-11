@@ -54,12 +54,11 @@ nmap <C-e> :e#<CR>
 nmap <C-n> :bnext<CR> 			
 " SWitch to previous buffer
 nmap <C-p> :bprev<CR>   		
-nmap <leader>f :CtrlP 
+
+nmap <leader>f :CtrlP <CR>
 " Syntastic go to next errors
 nmap ]l :lnext<Cr>
 nmap [l :lprev<Cr>
-" Display error flake 8
-nmap <F7> :SyntasticCheck<Cr>
 " Toggle lines numbers
 :nmap \l :setlocal number!<CR> 		
 " Toggles paste mode
@@ -88,15 +87,19 @@ noremap <Space> za
 """""""""
 " CTRLP "
 """""""""
-let g:ctrlp_working_path_mode = 2
-let g:ctrlp_by_filename = 1
-let g:ctrlp_max_files = 600
-let g:ctrlp_max_depth = 5
+let g:ctrlp_max_files = 100
+let g:ctrlp_working_path_mode = 'ra'
 
 """""""""""""
 " SYNTASTIC "
 """""""""""""
 let g:syntastic_always_populate_loc_list=1
+
+""" Do not check PEP8 on save
+let g:syntastic_mode_map = { 'passive_filetypes': ['python'] }
+
+" Display error flake 8
+nmap <leader>c :SyntasticCheck<Cr>
 
 """"""""
 " JEDI "
@@ -221,3 +224,5 @@ endfunction
 nmap <leader>p :call Class()<CR>
 """"""""""""""""""""""""""""""""
 colorscheme molokai 
+
+

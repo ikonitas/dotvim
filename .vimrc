@@ -92,7 +92,7 @@ noremap <Space> za
 """""""""
 " CTRLP "
 """""""""
-let g:ctrlp_max_files = 100
+let g:ctrlp_max_files = 1000
 let g:ctrlp_working_path_mode = 'ra'
 
 """""""""""""
@@ -101,7 +101,7 @@ let g:ctrlp_working_path_mode = 'ra'
 let g:syntastic_always_populate_loc_list=1
 
 """ Do not check PEP8 on save
-let g:syntastic_mode_map = { 'passive_filetypes': ['python'] }
+"let g:syntastic_mode_map = { 'passive_filetypes': ['python'] }
 
 " Display error flake 8
 nmap <leader>c :SyntasticCheck<Cr>
@@ -229,5 +229,3 @@ endfunction
 nmap <leader>p :call Class()<CR>
 """"""""""""""""""""""""""""""""
 colorscheme molokai 
-
-

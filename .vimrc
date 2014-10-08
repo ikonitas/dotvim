@@ -23,6 +23,7 @@ Bundle 'hynek/vim-python-pep8-indent'
 Bundle 'bling/vim-airline'
 Bundle 'majutsushi/tagbar'
 Bundle 'scrooloose/nerdtree'
+Bundle "pangloss/vim-javascript"
 
 " Map Leader
 let mapleader=","
@@ -92,7 +93,7 @@ noremap <Space> za
 """""""""
 " CTRLP "
 """""""""
-let g:ctrlp_max_files = 1000
+let g:ctrlp_max_files = 10000
 let g:ctrlp_working_path_mode = 'ra'
 
 """""""""""""
@@ -105,6 +106,9 @@ let g:syntastic_always_populate_loc_list=1
 
 " Display error flake 8
 nmap <leader>c :SyntasticCheck<Cr>
+
+" Ignore PEP8 rules
+let g:syntastic_python_flake8_args="--ignore=W293,E501,W391 --max-complexity 10"
 
 """"""""
 " JEDI "
@@ -128,6 +132,8 @@ filetype plugin indent on   " enable loading indent file for filetype
 """"""""
 " SETS "
 """"""""
+set encoding=utf-8                    " The encoding displayed.
+set fileencoding=utf-8                " The encoding written to file.
 set t_Co=256                  	      " User 256 Colors
 set clipboard=unnamedplus     	      " Settings clipboard to be able copy/paste 
 set autochdir                 	      " Your working directory is always the same as the file you are editing. 
@@ -194,14 +200,14 @@ au FileType html,htmldjango setlocal shiftwidth=2 tabstop=2 softtabstop=2
 """"""""""
 " PYTHON "
 """"""""""
-au FileType python setlocal expandtab smarttab shiftwidth=4 tabstop=4 textwidth=80 softtabstop=4 colorcolumn=80
+au FileType python setlocal expandtab smarttab shiftwidth=4 tabstop=4 textwidth=100 softtabstop=4 colorcolumn=100
 
 "Remove trailing hitespaces"
-autocmd BufWritePre *.css :%s/\s\+$//e
-autocmd BufWritePre *.less :%s/\s\+$//e
-autocmd BufWritePre *.py :%s/\s\+$//e
-autocmd BufWritePre *.html :%s/\s\+$//e
-autocmd BufWritePre *.js :%s/\s\+$//e
+" autocmd BufWritePre *.css :%s/\s\+$//e
+" autocmd BufWritePre *.less :%s/\s\+$//e
+" autocmd BufWritePre *.py :%s/\s\+$//e
+" autocmd BufWritePre *.html :%s/\s\+$//e
+" autocmd BufWritePre *.js :%s/\s\+$//e
 
 """""""""""""
 " FUNCTIONS "
@@ -229,3 +235,15 @@ endfunction
 nmap <leader>p :call Class()<CR>
 """"""""""""""""""""""""""""""""
 colorscheme molokai 
+
+" Adds coding utf-8 coding "
+autocmd BufWritePre,FileWritePre *.py   ks|call LastMod()|'s
+fun LastMod()
+  if line("$") > 1
+    let l = 0
+  else
+    let l = line("$")
+  endif
+  exe "0," . l ."g/#/s/#.*/#". 
+  \" -*- coding: utf-8 -*-"
+endfun

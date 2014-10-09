@@ -191,6 +191,9 @@ set nobackup
 set nowritebackup
 set noswapfile
 
+" Search with tab
+set wildcharm=<C-z>
+cmap <expr> <Tab> getcmdtype() == "/" ? "<CR>/<C-r>/" : "<C-z>"
 """"""""
 " HTML "
 """"""""
@@ -247,3 +250,4 @@ fun LastMod()
   exe "0," . l ."g/#/s/#.*/#". 
   \" -*- coding: utf-8 -*-"
 endfun
+

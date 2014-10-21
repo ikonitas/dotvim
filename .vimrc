@@ -24,6 +24,8 @@ Bundle 'bling/vim-airline'
 Bundle 'majutsushi/tagbar'
 Bundle 'scrooloose/nerdtree'
 Bundle "pangloss/vim-javascript"
+Bundle "Valloric/YouCompleteMe"
+
 
 " Map Leader
 let mapleader=","
@@ -100,6 +102,8 @@ let g:ctrlp_working_path_mode = 'ra'
 " SYNTASTIC "
 """""""""""""
 let g:syntastic_always_populate_loc_list=1
+let g:syntastic_javascript_checkers = ['jshint']
+let g:syntastic_javascript_jshint_exec='/usr/local/bin/jshint'
 
 """ Do not check PEP8 on save
 "let g:syntastic_mode_map = { 'passive_filetypes': ['python'] }
@@ -197,8 +201,13 @@ cmap <expr> <Tab> getcmdtype() == "/" ? "<CR>/<C-r>/" : "<C-z>"
 """"""""
 " HTML "
 """"""""
-autocmd FileType xhtml,xml,css,less,javascript setlocal expandtab shiftwidth=2 tabstop=2 softtabstop=2
-au FileType html,htmldjango setlocal shiftwidth=2 tabstop=2 softtabstop=2
+if hostname() == "ed-work"
+    autocmd FileType xhtml,xml,css,less,javascript setlocal expandtab shiftwidth=4 tabstop=4 softtabstop=4
+    au FileType html,htmldjango setlocal shiftwidth=4 tabstop=4 softtabstop=4
+elseif
+    autocmd FileType xhtml,xml,css,less,javascript setlocal expandtab shiftwidth=2 tabstop=2 softtabstop=2
+    au FileType html,htmldjango setlocal shiftwidth=2 tabstop=2 softtabstop=2
+endif
 
 """"""""""
 " PYTHON "

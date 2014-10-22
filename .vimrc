@@ -16,7 +16,6 @@ Bundle 'gmarik/vundle'
 " My Bundles
 Bundle 'mileszs/ack.vim'
 Bundle 'kien/ctrlp.vim'
-Bundle 'davidhalter/jedi-vim'
 Bundle 'scrooloose/syntastic'
 Bundle 'groenewege/vim-less'
 Bundle 'hynek/vim-python-pep8-indent'
@@ -265,3 +264,5 @@ fun LastMod()
   \" -*- coding: utf-8 -*-"
 endfun
 
+" YouCompleteMe got to definition
+nnoremap <leader>d :YcmCompleter GoToDefinitionElseDeclaration<CR>

@@ -201,7 +201,7 @@ cmap <expr> <Tab> getcmdtype() == "/" ? "<CR>/<C-r>/" : "<C-z>"
 """"""""
 " HTML "
 """"""""
-if $HOSTNAME == "ed-work"
+if hostname() == "ed"
     autocmd FileType xhtml,xml,css,less,javascript setlocal expandtab shiftwidth=4 tabstop=4 softtabstop=4
     au FileType html,htmldjango setlocal shiftwidth=4 tabstop=4 softtabstop=4
 else

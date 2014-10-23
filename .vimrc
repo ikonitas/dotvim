@@ -266,3 +266,6 @@ endfun
 
 " YouCompleteMe got to definition
 nnoremap <leader>d :YcmCompleter GoToDefinitionElseDeclaration<CR>
+
+" YouCompleteMe got to Declaration
+nnoremap <leader>g :YcmCompleter GoToDeclaration<CR>

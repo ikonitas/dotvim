@@ -200,12 +200,22 @@ cmap <expr> <Tab> getcmdtype() == "/" ? "<CR>/<C-r>/" : "<C-z>"
 """"""""
 " HTML "
 """"""""
+
+" Different work configs
+
 if hostname() == "ed"
     autocmd FileType xhtml,xml,css,less,javascript setlocal expandtab shiftwidth=4 tabstop=4 softtabstop=4
     au FileType html,htmldjango setlocal shiftwidth=4 tabstop=4 softtabstop=4
 else
     autocmd FileType xhtml,xml,css,less,javascript setlocal expandtab shiftwidth=2 tabstop=2 softtabstop=2
     au FileType html,htmldjango setlocal shiftwidth=2 tabstop=2 softtabstop=2
+
+    "Remove trailing hitespaces"
+    autocmd BufWritePre *.css :%s/\s\+$//e
+    autocmd BufWritePre *.less :%s/\s\+$//e
+    autocmd BufWritePre *.py :%s/\s\+$//e
+    autocmd BufWritePre *.html :%s/\s\+$//e
+    autocmd BufWritePre *.js :%s/\s\+$//e
 endif
 
 """"""""""
@@ -213,12 +223,6 @@ endif
 """"""""""
 au FileType python setlocal expandtab smarttab shiftwidth=4 tabstop=4 textwidth=100 softtabstop=4 colorcolumn=100
 
-"Remove trailing hitespaces"
-" autocmd BufWritePre *.css :%s/\s\+$//e
-" autocmd BufWritePre *.less :%s/\s\+$//e
-" autocmd BufWritePre *.py :%s/\s\+$//e
-" autocmd BufWritePre *.html :%s/\s\+$//e
-" autocmd BufWritePre *.js :%s/\s\+$//e
 
 """""""""""""
 " FUNCTIONS "

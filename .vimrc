@@ -43,6 +43,9 @@ nmap <leader>a <Esc>:Ack --ignore-dir=migrations --type-set=DUMB="*.pyc" --nobre
 " Set working directory
 nnoremap <leader>. :lcd %:p:h<CR>  	
 
+" Redraw screen
+nmap <leader>r :redraw!<CR>
+
 " Open existing file in Chrome
 nnoremap <F12>c :exe ':!google-chrome %'<CR>
 
@@ -275,3 +278,7 @@ nnoremap <leader>d :YcmCompleter GoToDefinitionElseDeclaration<CR>
 
 " YouCompleteMe got to Declaration
 nnoremap <leader>g :YcmCompleter GoToDeclaration<CR>
+
+" Move visual block
+vnoremap J :m '>+1<CR>gv=gv
+vnoremap K :m '<-2<CR>gv=gv

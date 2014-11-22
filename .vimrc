@@ -197,6 +197,13 @@ set noswapfile
 " Search with tab
 set wildcharm=<C-z>
 cmap <expr> <Tab> getcmdtype() == "/" ? "<CR>/<C-r>/" : "<C-z>"
+
+""""""""""
+" PYTHON "
+""""""""""
+au FileType python setlocal expandtab smarttab shiftwidth=4 tabstop=4 textwidth=80 softtabstop=4 colorcolumn=80
+
+
 """"""""
 " HTML "
 """"""""
@@ -206,6 +213,7 @@ cmap <expr> <Tab> getcmdtype() == "/" ? "<CR>/<C-r>/" : "<C-z>"
 if hostname() == "ed"
     autocmd FileType xhtml,xml,css,less,javascript setlocal expandtab shiftwidth=4 tabstop=4 softtabstop=4
     au FileType html,htmldjango setlocal shiftwidth=4 tabstop=4 softtabstop=4
+    au FileType python setlocal expandtab smarttab shiftwidth=4 tabstop=4 textwidth=100 softtabstop=4 colorcolumn=100
 else
     autocmd FileType xhtml,xml,css,less,javascript setlocal expandtab shiftwidth=2 tabstop=2 softtabstop=2
     au FileType html,htmldjango setlocal shiftwidth=2 tabstop=2 softtabstop=2
@@ -217,12 +225,6 @@ else
     autocmd BufWritePre *.html :%s/\s\+$//e
     autocmd BufWritePre *.js :%s/\s\+$//e
 endif
-
-""""""""""
-" PYTHON "
-""""""""""
-au FileType python setlocal expandtab smarttab shiftwidth=4 tabstop=4 textwidth=100 softtabstop=4 colorcolumn=100
-
 
 """""""""""""
 " FUNCTIONS "

@@ -101,7 +101,7 @@ let g:ctrlp_max_files = 10000
 let g:ctrlp_working_path_mode = 'ra'
 
 """""""""""""
-" SYNTASTIC "
+"SYNTASTIC "
 """""""""""""
 let g:syntastic_always_populate_loc_list=1
 let g:syntastic_javascript_checkers = ['jshint']
@@ -114,6 +114,7 @@ let g:syntastic_javascript_jshint_exec='/usr/local/bin/jshint'
 nmap <leader>c :SyntasticCheck<Cr>
 
 " Ignore PEP8 rules
+let g:syntastic_python_checkers = ['flake8']
 let g:syntastic_python_flake8_args="--ignore=W293,E501,W391 --max-complexity 10"
 
 """"""""

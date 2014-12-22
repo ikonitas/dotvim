@@ -101,7 +101,7 @@ let g:ctrlp_max_files = 10000
 let g:ctrlp_working_path_mode = 'ra'
 
 """""""""""""
-" SYNTASTIC "
+"SYNTASTIC "
 """""""""""""
 let g:syntastic_always_populate_loc_list=1
 let g:syntastic_javascript_checkers = ['jshint']
@@ -114,6 +114,7 @@ let g:syntastic_javascript_jshint_exec='/usr/local/bin/jshint'
 nmap <leader>c :SyntasticCheck<Cr>
 
 " Ignore PEP8 rules
+let g:syntastic_python_checkers = ['flake8']
 let g:syntastic_python_flake8_args="--ignore=W293,E501,W391"
 
 """"""""
@@ -200,6 +201,13 @@ set noswapfile
 " Search with tab
 set wildcharm=<C-z>
 cmap <expr> <Tab> getcmdtype() == "/" ? "<CR>/<C-r>/" : "<C-z>"
+
+""""""""""
+" PYTHON "
+""""""""""
+au FileType python setlocal expandtab smarttab shiftwidth=4 tabstop=4 textwidth=80 softtabstop=4 colorcolumn=80
+
+
 """"""""
 " HTML "
 """"""""
@@ -209,6 +217,7 @@ cmap <expr> <Tab> getcmdtype() == "/" ? "<CR>/<C-r>/" : "<C-z>"
 if hostname() == "ed"
     autocmd FileType xhtml,xml,css,less,javascript setlocal expandtab shiftwidth=4 tabstop=4 softtabstop=4
     au FileType html,htmldjango setlocal shiftwidth=4 tabstop=4 softtabstop=4
+    au FileType python setlocal expandtab smarttab shiftwidth=4 tabstop=4 textwidth=100 softtabstop=4 colorcolumn=100
 else
     autocmd FileType xhtml,xml,css,less,javascript setlocal expandtab shiftwidth=2 tabstop=2 softtabstop=2
     au FileType html,htmldjango setlocal shiftwidth=2 tabstop=2 softtabstop=2
@@ -226,8 +235,10 @@ endif
 """"""""""
 au FileType python setlocal expandtab smarttab shiftwidth=4 tabstop=4 textwidth=100 softtabstop=4 colorcolumn=100
 
+""""""""""""""""""""
+" RE STRUCTED TEXT "
+""""""""""""""""""""
 au FileType rst setlocal shiftwidth=4 tabstop=4 softtabstop=4 colorcolumn=80 textwidth=80
-
 
 """""""""""""
 " FUNCTIONS "

@@ -10,3 +10,7 @@
   3) ln -s ~/.vim/.vimrc ~/.vimrc
   
   4) :BundleInstall
+
+  5) cd ~/.vim/bundle/YouCompleteMe 
+
+  6) ./install.sh --clang-completer

@@ -115,7 +115,7 @@ nmap <leader>c :SyntasticCheck<Cr>
 
 " Ignore PEP8 rules
 let g:syntastic_python_checkers = ['flake8']
-let g:syntastic_python_flake8_args="--ignore=W293,E501,W391 --max-complexity 10"
+let g:syntastic_python_flake8_args="--ignore=W293,E501,W391"
 
 """"""""
 " JEDI "
@@ -230,6 +230,16 @@ else
     autocmd BufWritePre *.js :%s/\s\+$//e
 endif
 
+""""""""""
+" PYTHON "
+""""""""""
+au FileType python setlocal expandtab smarttab shiftwidth=4 tabstop=4 textwidth=100 softtabstop=4 colorcolumn=100
+
+""""""""""""""""""""
+" RE STRUCTED TEXT "
+""""""""""""""""""""
+au FileType rst setlocal shiftwidth=4 tabstop=4 softtabstop=4 colorcolumn=80 textwidth=80
+
 """""""""""""
 " FUNCTIONS "
 """""""""""""
@@ -283,3 +293,6 @@ nnoremap <leader>g :YcmCompleter GoToDeclaration<CR>
 " Move visual block
 vnoremap J :m '>+1<CR>gv=gv
 vnoremap K :m '<-2<CR>gv=gv
+
+" Remap caps lock to ESC requires xorg-xmodmap package installed
+silent !xmodmap -e 'clear Lock' -e 'keycode 0x42 = Escape'

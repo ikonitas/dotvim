@@ -219,7 +219,7 @@ if hostname() == "ed"
     au FileType html,htmldjango setlocal shiftwidth=4 tabstop=4 softtabstop=4
     au FileType python setlocal expandtab smarttab shiftwidth=4 tabstop=4 textwidth=100 softtabstop=4 colorcolumn=100
 else
-    autocmd FileType xhtml,xml,css,less,javascript setlocal expandtab shiftwidth=2 tabstop=2 softtabstop=2
+    autocmd FileType xhtml,xml,css,less,javascript,scss setlocal expandtab shiftwidth=2 tabstop=2 softtabstop=2
     au FileType html,htmldjango setlocal shiftwidth=2 tabstop=2 softtabstop=2
 
     "Remove trailing hitespaces"

@@ -294,5 +294,6 @@ nnoremap <leader>g :YcmCompleter GoToDeclaration<CR>
 vnoremap J :m '>+1<CR>gv=gv
 vnoremap K :m '<-2<CR>gv=gv
 
-" Remap caps lock to ESC requires xorg-xmodmap package installed
-silent !xmodmap -e 'clear Lock' -e 'keycode 0x42 = Escape'
+" Remap caps lock to ESC requires xorg-xmodmap package installed and hide
+" output
+silent !xmodmap -e 'clear Lock' -e 'keycode 0x42 = Escape' > /dev/null 2>&1

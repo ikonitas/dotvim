@@ -14,3 +14,7 @@
   5) cd ~/.vim/bundle/YouCompleteMe 
 
   6) ./install.sh --clang-completer
+
+
+[![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/zatan/dotvim/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
+

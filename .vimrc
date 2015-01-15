@@ -222,7 +222,7 @@ if hostname() == "ed"
     au FileType html,htmldjango setlocal shiftwidth=4 tabstop=4 softtabstop=4
     au FileType python setlocal expandtab smarttab shiftwidth=4 tabstop=4 textwidth=100 softtabstop=4 colorcolumn=100
 else
-    autocmd FileType xhtml,xml,css,less,javascript setlocal expandtab shiftwidth=2 tabstop=2 softtabstop=2
+    autocmd FileType xhtml,xml,css,less,javascript,scss setlocal expandtab shiftwidth=2 tabstop=2 softtabstop=2
     au FileType html,htmldjango setlocal shiftwidth=2 tabstop=2 softtabstop=2
 
     "Remove trailing hitespaces"
@@ -297,5 +297,6 @@ nnoremap <leader>g :YcmCompleter GoToDeclaration<CR>
 vnoremap J :m '>+1<CR>gv=gv
 vnoremap K :m '<-2<CR>gv=gv
 
-" Remap caps lock to ESC requires xorg-xmodmap package installed
-silent !xmodmap -e 'clear Lock' -e 'keycode 0x42 = Escape'
+" Remap caps lock to ESC requires xorg-xmodmap package installed and hide
+" output
+silent !xmodmap -e 'clear Lock' -e 'keycode 0x42 = Escape' > /dev/null 2>&1

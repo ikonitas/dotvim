@@ -107,6 +107,7 @@ let g:syntastic_always_populate_loc_list=1
 let g:syntastic_javascript_checkers = ['jshint']
 let g:syntastic_javascript_jshint_exec='/usr/local/bin/jshint'
 
+" Change config edit file /var/lib/gems/1.9.1/gems/scss-lint-0.32.0/config/default.yml
 let g:syntastic_scss_lint_exec = '/usr/local/bin/scss-lint -c ~/.scss-lint.yml'
 let g:syntastic_scss_checkers = ['scss_lint']
 

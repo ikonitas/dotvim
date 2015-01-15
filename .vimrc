@@ -107,6 +107,9 @@ let g:syntastic_always_populate_loc_list=1
 let g:syntastic_javascript_checkers = ['jshint']
 let g:syntastic_javascript_jshint_exec='/usr/local/bin/jshint'
 
+let g:syntastic_scss_lint_exec = '/usr/local/bin/scss-lint -c ~/.scss-lint.yml'
+let g:syntastic_scss_checkers = ['scss_lint']
+
 """ Do not check PEP8 on save
 "let g:syntastic_mode_map = { 'passive_filetypes': ['python'] }
 

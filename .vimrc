@@ -39,9 +39,9 @@ command WQ wq
 " Sudo write this
 cmap w!! w !sudo tee %
 " ACK searching
-nmap <leader>a <Esc>:Ack --ignore-dir=migrations --type-set=DUMB="*.pyc" --nobreak --noenv -i -Q 
+nmap <leader>a <Esc>:Ack --ignore-dir=migrations --type-set=DUMB="*.pyc" --nobreak --noenv -i -Q
 " Set working directory
-nnoremap <leader>. :lcd %:p:h<CR>  	
+nnoremap <leader>. :lcd %:p:h<CR>
 
 " Redraw screen
 nmap <leader>r :redraw!<CR>
@@ -53,13 +53,13 @@ nnoremap <F12>c :exe ':!google-chrome %'<CR>
 nnoremap <Leader>m :w <BAR> !lessc % > ../css/%:t:r.css<CR><space>
 
 " <Ctrl-l> redraws the screen and removes any search highlighting.
-nmap <C-l> :nohlsearch<CR>              
+nmap <C-l> :nohlsearch<CR>
 " Switch between bufers
-nmap <C-e> :e#<CR> 			
+nmap <C-e> :e#<CR>
 " SWitch to next buffer
-nmap <C-n> :bnext<CR> 			
+nmap <C-n> :bnext<CR>
 " SWitch to previous buffer
-nmap <C-p> :bprev<CR>   		
+nmap <C-p> :bprev<CR>
 
 nmap <leader>f :CtrlP <CR>
 " Syntastic go to next errors
@@ -70,9 +70,9 @@ nmap [l :lprev<Cr>
 nmap <F3> :NERDTreeToggle<Cr>
 
 " Toggle lines numbers
-:nmap \l :setlocal number!<CR> 		
+:nmap \l :setlocal number!<CR>
 " Toggles paste mode
-:nmap \o :set paste!<CR>                
+:nmap \o :set paste!<CR>
 " Lets search through buffer files
 nmap ; :CtrlPBuffer<CR>
 "Map sort function to a key
@@ -146,8 +146,8 @@ filetype plugin indent on   " enable loading indent file for filetype
 set encoding=utf-8                    " The encoding displayed.
 set fileencoding=utf-8                " The encoding written to file.
 set t_Co=256                  	      " User 256 Colors
-set clipboard=unnamedplus     	      " Settings clipboard to be able copy/paste 
-set autochdir                 	      " Your working directory is always the same as the file you are editing. 
+set clipboard=unnamedplus     	      " Settings clipboard to be able copy/paste
+set autochdir                 	      " Your working directory is always the same as the file you are editing.
 set number        	      	      " Display line number
 set numberwidth=1             	      " using only 1 column (and 1 space) while possible
 set title                     	      " show title in console title bar
@@ -165,7 +165,7 @@ set showmatch               	      " Briefly jump to a paren once it's balanced
 set linebreak               	      " don't wrap textin the middle of a word
 set autoindent              	      " always set autoindenting on
 set smartindent             	      " use smart indent if there is no indent file
-set tabstop=4               	      " <tab> inserts 4 spaces 
+set tabstop=4               	      " <tab> inserts 4 spaces
 set shiftwidth=4            	      " but an indent level is 2 spaces wide.
 set softtabstop=4           	      " <BS> over an autoindent deletes both spaces.
 set expandtab               	      " Use spaces, not tabs, for autoindent/tab key.
@@ -191,7 +191,7 @@ set ruler                   	      " Show some info, even without statuslines.
 set laststatus=2            	      " Always show statusline, even if only 1 window.
 set ignorecase              	      " Default to using case insensitive searches,
 set smartcase               	      " unless uppercase letters are used in the regex.
-set smarttab                	      " Handle tabs more intelligently 
+set smarttab                	      " Handle tabs more intelligently
 set hlsearch                	      " Highlight searches by default.
 set incsearch               	      " Incrementally search while typing a /regex
 set swapfile
@@ -222,11 +222,19 @@ if hostname() == "ed"
     autocmd FileType xhtml,xml,css,less,javascript setlocal expandtab shiftwidth=4 tabstop=4 softtabstop=4
     au FileType html,htmldjango setlocal shiftwidth=4 tabstop=4 softtabstop=4
     au FileType python setlocal expandtab smarttab shiftwidth=4 tabstop=4 textwidth=100 softtabstop=4 colorcolumn=100
+
+    "Remove trailing whitespaces only after some text."
+    autocmd BufWritePre *.css :%s/\S\zs\s\+$//e
+    autocmd BufWritePre *.less :%s/\S\zs\s\+$//e
+    autocmd BufWritePre *.py :%s/\S\zs\s\+$//e
+    autocmd BufWritePre *.html :%s/\S\zs\s\+$//e
+    autocmd BufWritePre *.js :%s/\S\zs\s\+$//e
+    autocmd BufWritePre *.vimrc :%s/\S\zs\s\+$//e
 else
     autocmd FileType xhtml,xml,css,less,javascript,scss setlocal expandtab shiftwidth=2 tabstop=2 softtabstop=2
     au FileType html,htmldjango setlocal shiftwidth=2 tabstop=2 softtabstop=2
 
-    "Remove trailing hitespaces"
+    "Remove trailing whitespaces."
     autocmd BufWritePre *.css :%s/\s\+$//e
     autocmd BufWritePre *.less :%s/\s\+$//e
     autocmd BufWritePre *.py :%s/\s\+$//e
@@ -269,7 +277,7 @@ r~/.vim/txt/ipdb.txt
 endfunction
 nmap <leader>p :call Class()<CR>
 """"""""""""""""""""""""""""""""
-colorscheme molokai 
+colorscheme molokai
 
 " Adds coding utf-8 coding "
 autocmd BufWritePre,FileWritePre *.py   ks|call LastMod()|'s
@@ -284,7 +292,7 @@ fun LastMod()
   else
     let l = line("$")
   endif
-  exe "0," . l ."g/#/s/#.*/#". 
+  exe "0," . l ."g/#/s/#.*/#".
   \" -*- coding: utf-8 -*-"
 endfun
 

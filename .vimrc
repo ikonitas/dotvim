@@ -226,6 +226,7 @@ if hostname() == "ed"
     "Remove trailing whitespaces only after some text."
     autocmd BufWritePre *.css :%s/\S\zs\s\+$//e
     autocmd BufWritePre *.less :%s/\S\zs\s\+$//e
+    autocmd BufWritePre *.scss :%s/\S\zs\s\+$//e
     autocmd BufWritePre *.py :%s/\S\zs\s\+$//e
     autocmd BufWritePre *.html :%s/\S\zs\s\+$//e
     autocmd BufWritePre *.js :%s/\S\zs\s\+$//e
@@ -237,6 +238,7 @@ else
     "Remove trailing whitespaces."
     autocmd BufWritePre *.css :%s/\s\+$//e
     autocmd BufWritePre *.less :%s/\s\+$//e
+    autocmd BufWritePre *.scss :%s/\S\zs\s\+$//e
     autocmd BufWritePre *.py :%s/\s\+$//e
     autocmd BufWritePre *.html :%s/\s\+$//e
     autocmd BufWritePre *.js :%s/\s\+$//e

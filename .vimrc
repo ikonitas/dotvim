@@ -39,7 +39,9 @@ command WQ wq
 " Sudo write this
 cmap w!! w !sudo tee %
 " ACK searching
-nmap <leader>a <Esc>:Ack --ignore-dir=migrations --type-set=DUMB="*.pyc" --nobreak --noenv -i -Q
+nmap <leader>a <Esc>:Ack --ignore-dir=migrations --type-set=DUMB="*.pyc" --nobreak --noenv -i -Q  <c-r>=expand("<cword>")<cr>    
+"
+"nmap <Leader>a :Ack <c-r>=expand("<cword>")<cr>
 " Set working directory
 nnoremap <leader>. :lcd %:p:h<CR>
 
@@ -230,7 +232,6 @@ if hostname() == "ed"
     autocmd BufWritePre *.py :%s/\S\zs\s\+$//e
     autocmd BufWritePre *.html :%s/\S\zs\s\+$//e
     autocmd BufWritePre *.js :%s/\S\zs\s\+$//e
-    autocmd BufWritePre *.vimrc :%s/\S\zs\s\+$//e
 else
     autocmd FileType xhtml,xml,css,less,javascript,scss setlocal expandtab shiftwidth=2 tabstop=2 softtabstop=2
     au FileType html,htmldjango setlocal shiftwidth=2 tabstop=2 softtabstop=2

@@ -312,3 +312,6 @@ vnoremap K :m '<-2<CR>gv=gv
 " Remap caps lock to ESC requires xorg-xmodmap package installed and hide
 " output
 silent !xmodmap -e 'clear Lock' -e 'keycode 0x42 = Escape' > /dev/null 2>&1
+
+autocmd CursorMoved * exe printf('match IncSearch /\V\<%s\>/', escape(expand('<cword>'), '/\'))
+

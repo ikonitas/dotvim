@@ -153,7 +153,7 @@ if &t_Co > 255
    hi Function        ctermfg=118               cterm=bold
    hi Identifier      ctermfg=208
    hi Ignore          ctermfg=244 ctermbg=232
-   hi IncSearch       ctermfg=193 ctermbg=16
+   hi IncSearch       ctermfg=248 ctermbg=16
 
    hi Keyword         ctermfg=161               cterm=bold
    hi Label           ctermfg=229               cterm=none

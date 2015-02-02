@@ -24,6 +24,7 @@ Bundle 'majutsushi/tagbar'
 Bundle 'scrooloose/nerdtree'
 Bundle "pangloss/vim-javascript"
 Bundle "Valloric/YouCompleteMe"
+Bundle 'airblade/vim-rooter'
 
 
 " Map Leader
@@ -39,7 +40,7 @@ command WQ wq
 " Sudo write this
 cmap w!! w !sudo tee %
 " ACK searching
-nmap <leader>a <Esc>:Ack --ignore-dir=migrations --type-set=DUMB="*.pyc" --nobreak --noenv -i -Q  <c-r>=expand("<cword>")<cr>    
+nmap <leader>a <Esc>:Ack --ignore-dir=migrations --ignore-dir=cache --ignore-dir=logs --type-set=DUMB="*.pyc" --nobreak --noenv -i -Q  <c-r>=expand("<cword>")<cr>    
 "
 "nmap <Leader>a :Ack <c-r>=expand("<cword>")<cr>
 " Set working directory

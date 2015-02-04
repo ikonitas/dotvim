@@ -40,8 +40,9 @@ command WQ wq
 " Sudo write this
 cmap w!! w !sudo tee %
 " ACK searching
-nmap <leader>a <Esc>:Ack --ignore-dir=migrations --ignore-dir=cache --ignore-dir=logs --type-set=DUMB="*.pyc" --nobreak --noenv -i -Q  <c-r>=expand("<cword>")<cr>    
-"
+nmap <leader>a :Rooter<CR>:Ack --ignore-dir=migrations --ignore-dir=cache --ignore-dir=logs --type-set=DUMB="*.pyc" --nobreak --noenv -i -Q  <c-r>=expand("<cword>")<cr>
+
+
 "nmap <Leader>a :Ack <c-r>=expand("<cword>")<cr>
 " Set working directory
 nnoremap <leader>. :lcd %:p:h<CR>
@@ -131,10 +132,17 @@ let g:syntastic_python_flake8_args="--ignore=W293,E501,W391"
 let g:jedi#use_tabs_not_buffers = 0
 let g:jedi#show_call_signatures = 0
 
+
 """""""
 " ACK "
 """""""
 let g:ackprg="ack-grep"
+
+
+""""""""""""""""""""""""""""""
+" VIM-ROOT disable by default"
+""""""""""""""""""""""""""""""
+let g:rooter_manual_only = 1
 
 
 syntax enable
@@ -314,5 +322,11 @@ vnoremap K :m '<-2<CR>gv=gv
 " output
 silent !xmodmap -e 'clear Lock' -e 'keycode 0x42 = Escape' > /dev/null 2>&1
 
+" On cursor move highligh all apearances.
 autocmd CursorMoved * exe printf('match IncSearch /\V\<%s\>/', escape(expand('<cword>'), '/\'))
+
+
+" This autocmd changes the window-local current directory to be the same as
+" the directory of the current file for example, to not change directory if the file is in /tmp.
+autocmd BufEnter * if expand("%:p:h") !~ '^/tmp' | silent! lcd %:p:h | endif
 

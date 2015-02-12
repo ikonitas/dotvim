@@ -40,7 +40,7 @@ command WQ wq
 " Sudo write this
 cmap w!! w !sudo tee %
 " ACK searching
-nmap <leader>a :Rooter<CR>:Ack --ignore-dir=migrations --ignore-dir=cache --ignore-dir=logs --type-set=DUMB="*.pyc" --nobreak --noenv -i -Q  <c-r>=expand("<cword>")<cr>
+nmap <leader>a :Rooter<CR>:Ack! --ignore-dir=migrations --ignore-dir=cache --ignore-dir=logs --type-set=DUMB="*.pyc" --nobreak --noenv -i -Q  <c-r>=expand("<cword>")<cr>
 
 
 "nmap <Leader>a :Ack <c-r>=expand("<cword>")<cr>

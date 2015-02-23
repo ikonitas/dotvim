@@ -21,7 +21,6 @@ Bundle 'groenewege/vim-less'
 Bundle 'hynek/vim-python-pep8-indent'
 Bundle 'bling/vim-airline'
 Bundle 'majutsushi/tagbar'
-Bundle 'scrooloose/nerdtree'
 Bundle "pangloss/vim-javascript"
 Bundle "Valloric/YouCompleteMe"
 Bundle 'airblade/vim-rooter'

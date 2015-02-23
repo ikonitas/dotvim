@@ -74,9 +74,6 @@ nmap <leader>f :CtrlP <CR>
 nmap ]l :lnext<Cr>
 nmap [l :lprev<Cr>
 
-" Enable NerdTree
-nmap <F3> :NERDTreeToggle<Cr>
-
 " Toggle lines numbers
 :nmap \l :setlocal number!<CR>
 " Toggles paste mode

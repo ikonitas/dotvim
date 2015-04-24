@@ -25,6 +25,7 @@ Bundle "pangloss/vim-javascript"
 Bundle "Valloric/YouCompleteMe"
 Bundle 'airblade/vim-rooter'
 Bundle 'tpope/vim-surround'
+Bundle 'chase/vim-ansible-yaml'
 
 " Map Leader
 let mapleader=","

@@ -24,7 +24,7 @@ Bundle 'majutsushi/tagbar'
 Bundle "pangloss/vim-javascript"
 Bundle "Valloric/YouCompleteMe"
 Bundle 'airblade/vim-rooter'
-
+Bundle 'tpope/vim-surround'
 
 " Map Leader
 let mapleader=","
@@ -155,13 +155,14 @@ filetype plugin indent on   " enable loading indent file for filetype
 """"""""
 " SETS "
 """"""""
-set autochdir                 	      " Your working directory is always the same as the file you are editing.
+set noautochdir                 	  " Your working directory is always the same as the file you are editing.
 set autoindent              	      " always set autoindenting on
 set autoread                          " Automatically reload files changed on disk.
 set backspace=2             	      " Allow backspacing over autoindent, EOL, and BOL
 set clipboard=unnamedplus     	      " Settings clipboard to be able copy/paste
 set confirm                 	      " Y-N-C prompt if closing with unsaved changes.
 set cursorline              	      " have a line indicate the cursor location
+set completeopt-=preview              " Remove preview window
 set dir=/tmp
 set encoding=utf-8                    " The encoding displayed.
 set expandtab               	      " Use spaces, not tabs, for autoindent/tab key.
@@ -331,5 +332,4 @@ autocmd CursorMoved * exe printf('match IncSearch /\V\<%s\>/', escape(expand('<c
 " This autocmd changes the window-local current directory to be the same as
 " the directory of the current file for example, to not change directory if the file is in /tmp.
 autocmd BufEnter * if expand("%:p:h") !~ '^/tmp' | silent! lcd %:p:h | endif
-
 

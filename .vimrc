@@ -28,7 +28,7 @@ Bundle 'tpope/vim-surround'
 Bundle 'chase/vim-ansible-yaml'
 
 " Map Leader
-let mapleader=","
+let mapleader="\<Space>"
 
 """"""""""""
 " COMMANDS "

@@ -26,6 +26,7 @@ Bundle "Valloric/YouCompleteMe"
 Bundle 'airblade/vim-rooter'
 Bundle 'tpope/vim-surround'
 Bundle 'chase/vim-ansible-yaml'
+Bundle 'terryma/vim-expand-region'
 
 " Map Leader
 let mapleader="\<Space>"
@@ -47,6 +48,11 @@ nmap <leader>a :Rooter<CR>:Ack! --ignore-dir=migrations --ignore-dir=cache --ign
 " Set working directory
 nnoremap <leader>. :lcd %:p:h<CR>
 
+" Save file
+nnoremap <Leader>w :w<CR>
+
+" Visual line mode
+nmap <Leader><Leader> V
 
 " Format pasted text automatically.
 :nnoremap p ]p
@@ -333,4 +339,8 @@ autocmd CursorMoved * exe printf('match IncSearch /\V\<%s\>/', escape(expand('<c
 " This autocmd changes the window-local current directory to be the same as
 " the directory of the current file for example, to not change directory if the file is in /tmp.
 autocmd BufEnter * if expand("%:p:h") !~ '^/tmp' | silent! lcd %:p:h | endif
+
+" Vim expand region
+vmap v <Plug>(expand_region_expand)
+vmap <C-v> <Plug>(expand_region_shrink)
 

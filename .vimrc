@@ -24,6 +24,7 @@ Bundle 'majutsushi/tagbar'
 Bundle "pangloss/vim-javascript"
 Bundle "Valloric/YouCompleteMe"
 Bundle 'airblade/vim-rooter'
+Bundle 'othree/javascript-libraries-syntax.vim'
 
 
 " Map Leader
@@ -104,6 +105,8 @@ noremap <Space> za
 """""""""
 let g:ctrlp_max_files = 10000
 let g:ctrlp_working_path_mode = 'ra'
+let g:ctrlp_custom_ignore = 'node_modules\|DS_Store\|git'
+
 
 """""""""""""
 "SYNTASTIC "
@@ -190,6 +193,7 @@ set wrapmargin=0
 set noautowrite             	      " Never write a file unless I request it.
 set noautowriteall          	      " NEVER.
 set noautoread              	      " Don't automatically re-read changed files.
+set noautochdir
 set modeline                	      " Allow vim options to be embedded in files;
 set modelines=5             	      " they must be within the first or last 5 lines.
 set ffs=unix,dos,mac        	      " Try recognizing dos, unix, and mac line endings.
@@ -331,4 +335,6 @@ autocmd CursorMoved * exe printf('match IncSearch /\V\<%s\>/', escape(expand('<c
 " the directory of the current file for example, to not change directory if the file is in /tmp.
 autocmd BufEnter * if expand("%:p:h") !~ '^/tmp' | silent! lcd %:p:h | endif
 
+" javascript-libraries-syntaxlet g:used_javascript_libs =
+let g:used_javascript_libs = 'angularjs,jquery'
 

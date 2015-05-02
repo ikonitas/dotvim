@@ -25,10 +25,12 @@ Bundle "pangloss/vim-javascript"
 Bundle "Valloric/YouCompleteMe"
 Bundle 'airblade/vim-rooter'
 Bundle 'othree/javascript-libraries-syntax.vim'
-
+Bundle 'tpope/vim-surround'
+Bundle 'chase/vim-ansible-yaml'
+Bundle 'terryma/vim-expand-region'
 
 " Map Leader
-let mapleader=","
+let mapleader="\<Space>"
 
 """"""""""""
 " COMMANDS "
@@ -47,6 +49,11 @@ nmap <leader>a :Rooter<CR>:Ack! --ignore-dir=migrations --ignore-dir=cache --ign
 " Set working directory
 nnoremap <leader>. :lcd %:p:h<CR>
 
+" Save file
+nnoremap <Leader>w :w<CR>
+
+" Visual line mode
+nmap <Leader><Leader> V
 
 " Format pasted text automatically.
 :nnoremap p ]p
@@ -158,65 +165,63 @@ filetype plugin indent on   " enable loading indent file for filetype
 """"""""
 " SETS "
 """"""""
-set encoding=utf-8                    " The encoding displayed.
-set fileencoding=utf-8                " The encoding written to file.
-set t_Co=256                  	      " User 256 Colors
-set clipboard=unnamedplus     	      " Settings clipboard to be able copy/paste
-set autochdir                 	      " Your working directory is always the same as the file you are editing.
-set number        	      	      " Display line number
-set numberwidth=1             	      " using only 1 column (and 1 space) while possible
-set title                     	      " show title in console title bar
-set wildmenu                  	      " Menu completion in command mode on <Tab>
-set wildmode=full             	      " <Tab> cycles between all matching choices.
-set wildignore+=*.o,*.obj,.git,*.pyc  " Ignore these files when completing
-set hidden                            " Hides buffers instead of closing them
-set cursorline              	      " have a line indicate the cursor location
-set ruler                   	      " show the cursor position all the time
-set nostartofline           	      " Avoid moving cursor to BOL when jumping around
-set virtualedit=block       	      " Let cursor move past the last char in <C-v> mode
-set scrolloff=3             	      " Keep 3 context lines above and below the cursor
-set backspace=2             	      " Allow backspacing over autoindent, EOL, and BOL
-set showmatch               	      " Briefly jump to a paren once it's balanced
-set linebreak               	      " don't wrap textin the middle of a word
 set autoindent              	      " always set autoindenting on
-set smartindent             	      " use smart indent if there is no indent file
-set tabstop=4               	      " <tab> inserts 4 spaces
-set shiftwidth=4            	      " but an indent level is 2 spaces wide.
-set softtabstop=4           	      " <BS> over an autoindent deletes both spaces.
+set autoread                          " Automatically reload files changed on disk.
+set backspace=2             	      " Allow backspacing over autoindent, EOL, and BOL
+set clipboard=unnamedplus     	      " Settings clipboard to be able copy/paste
+set completeopt-=preview              " Remove preview window
+set confirm                 	      " Y-N-C prompt if closing with unsaved changes.
+set cursorline              	      " have a line indicate the cursor location
+set dir=/tmp
+set encoding=utf-8                    " The encoding displayed.
 set expandtab               	      " Use spaces, not tabs, for autoindent/tab key.
-set shiftround              	      " rounds indent to a multiple of shiftwidth
-set matchpairs+=<:>         	      " show matching <> (html mainly) as well
-set foldmethod=indent       	      " allow us to fold on indents
-set foldlevel=99            	      " don't fold by default
+set ffs=unix,dos,mac        	      " Try recognizing dos, unix, and mac line endings.
+set fileencoding=utf-8                " The encoding written to file.
 set foldcolumn=0            	      " show the fold column
-set wrapmargin=0
-set noautowrite             	      " Never write a file unless I request it.
-set noautowriteall          	      " NEVER.
-set noautoread              	      " Don't automatically re-read changed files.
-set noautochdir
+set foldlevel=99            	      " don't fold by default
+set foldmethod=indent       	      " allow us to fold on indents
+set hidden                            " Hides buffers instead of closing them
+set hlsearch                	      " Highlight searches by default.
+set ignorecase              	      " Default to using case insensitive searches,
+set incsearch               	      " Incrementally search while typing a /regex
+set laststatus=2            	      " Always show statusline, even if only 1 window.
+set linebreak               	      " don't wrap textin the middle of a word
+set ls=2                    	      " allways show status line
+set matchpairs+=<:>         	      " show matching <> (html mainly) as well
 set modeline                	      " Allow vim options to be embedded in files;
 set modelines=5             	      " they must be within the first or last 5 lines.
-set ffs=unix,dos,mac        	      " Try recognizing dos, unix, and mac line endings.
-set ls=2                    	      " allways show status line
-set vb t_vb=                	      " Disable all bells.  I hate ringing/flashing.
-set confirm                 	      " Y-N-C prompt if closing with unsaved changes.
-set showcmd                 	      " Show incomplete normal mode commands as I type.
-set report=0                	      " : commands always print changed line count.
-set shortmess+=a            	      " Use [+]/[RO]/[w] for modified/readonly/written.
-set ruler                   	      " Show some info, even without statuslines.
-set laststatus=2            	      " Always show statusline, even if only 1 window.
-set ignorecase              	      " Default to using case insensitive searches,
-set smartcase               	      " unless uppercase letters are used in the regex.
-set smarttab                	      " Handle tabs more intelligently
-set hlsearch                	      " Highlight searches by default.
-set incsearch               	      " Incrementally search while typing a /regex
-set swapfile
-set dir=/tmp
-
-" Disable stupid backups and swap files
-set nobackup
-set nowritebackup
+set noautochdir                 	  " Your working directory is always the same as the file you are editing.
+set noautoread              	      " Don't automatically re-read changed files.
+set noautowrite             	      " Never write a file unless I request it.
+set noautowriteall          	      " NEVER.
+set nobackup                          " Disable stupid backups and swap files
+set nostartofline           	      " Avoid moving cursor to BOL when jumping around
 set noswapfile
+set nowritebackup
+set number        	      	      " Display line number
+set numberwidth=1             	      " using only 1 column (and 1 space) while possible
+set report=0                	      " : commands always print changed line count.
+set ruler                   	      " show the cursor position all the time
+set scrolloff=3             	      " Keep 3 context lines above and below the cursor
+set shiftround              	      " rounds indent to a multiple of shiftwidth
+set shiftwidth=4            	      " but an indent level is 2 spaces wide.
+set shortmess+=a            	      " Use [+]/[RO]/[w] for modified/readonly/written.
+set showcmd                 	      " Show incomplete normal mode commands as I type.
+set showmatch               	      " Briefly jump to a paren once it's balanced
+set smartcase               	      " unless uppercase letters are used in the regex.
+set smartindent             	      " use smart indent if there is no indent file
+set smarttab                	      " Handle tabs more intelligently
+set softtabstop=4           	      " <BS> over an autoindent deletes both spaces.
+set swapfile
+set t_Co=256                  	      " User 256 Colors
+set tabstop=4               	      " <tab> inserts 4 spaces
+set title                     	      " show title in console title bar
+set vb t_vb=                	      " Disable all bells.  I hate ringing/flashing.
+set virtualedit=block       	      " Let cursor move past the last char in <C-v> mode
+set wildignore+=*.o,*.obj,.git,*.pyc  " Ignore these files when completing
+set wildmenu                  	      " Menu completion in command mode on <Tab>
+set wildmode=longest,full             " <Tab> cycles between all matching choices.
+set wrapmargin=0
 
 " Search with tab
 set wildcharm=<C-z>
@@ -337,4 +342,7 @@ autocmd BufEnter * if expand("%:p:h") !~ '^/tmp' | silent! lcd %:p:h | endif
 
 " javascript-libraries-syntaxlet g:used_javascript_libs =
 let g:used_javascript_libs = 'angularjs,jquery'
+" Vim expand region
+vmap v <Plug>(expand_region_expand)
+vmap <C-v> <Plug>(expand_region_shrink)
 

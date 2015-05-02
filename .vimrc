@@ -101,8 +101,9 @@ nmap <F8> :TagbarToggle<CR>
 
 " Spell check
 map <F9> :setlocal spell! spelllang=en_us<CR>
+
 " Fold with space
-noremap <Space> za
+nnoremap <leader>z za
 " Esc
 :imap jj <Esc>
 

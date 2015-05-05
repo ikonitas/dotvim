@@ -24,6 +24,7 @@ Bundle 'majutsushi/tagbar'
 Bundle "pangloss/vim-javascript"
 Bundle "Valloric/YouCompleteMe"
 Bundle 'airblade/vim-rooter'
+Bundle 'othree/javascript-libraries-syntax.vim'
 Bundle 'tpope/vim-surround'
 Bundle 'chase/vim-ansible-yaml'
 Bundle 'terryma/vim-expand-region'
@@ -102,7 +103,8 @@ nmap <F8> :TagbarToggle<CR>
 map <F9> :setlocal spell! spelllang=en_us<CR>
 
 " Fold with space
-noremap <leader>z za
+nnoremap <leader>z za
+
 " Esc
 :imap jj <Esc>
 
@@ -112,6 +114,8 @@ noremap <leader>z za
 """""""""
 let g:ctrlp_max_files = 10000
 let g:ctrlp_working_path_mode = 'ra'
+let g:ctrlp_custom_ignore = 'node_modules\|DS_Store\|git'
+
 
 """""""""""""
 "SYNTASTIC "
@@ -163,14 +167,13 @@ filetype plugin indent on   " enable loading indent file for filetype
 """"""""
 " SETS "
 """"""""
-set noautochdir                 	  " Your working directory is always the same as the file you are editing.
 set autoindent              	      " always set autoindenting on
 set autoread                          " Automatically reload files changed on disk.
 set backspace=2             	      " Allow backspacing over autoindent, EOL, and BOL
 set clipboard=unnamedplus     	      " Settings clipboard to be able copy/paste
+set completeopt-=preview              " Remove preview window
 set confirm                 	      " Y-N-C prompt if closing with unsaved changes.
 set cursorline              	      " have a line indicate the cursor location
-set completeopt-=preview              " Remove preview window
 set dir=/tmp
 set encoding=utf-8                    " The encoding displayed.
 set expandtab               	      " Use spaces, not tabs, for autoindent/tab key.
@@ -191,14 +194,17 @@ set ls=2                    	      " allways show status line
 set matchpairs+=<:>         	      " show matching <> (html mainly) as well
 set modeline                	      " Allow vim options to be embedded in files;
 set modelines=5             	      " they must be within the first or last 5 lines.
+set noautochdir                 	  " Your working directory is always the same as the file you are editing.
 set noautoread              	      " Don't automatically re-read changed files.
 set noautowrite             	      " Never write a file unless I request it.
 set noautowriteall          	      " NEVER.
+set nobackup                          " Disable stupid backups and swap files
 set nostartofline           	      " Avoid moving cursor to BOL when jumping around
+set noswapfile
+set nowritebackup
 set number        	      	      " Display line number
 set numberwidth=1             	      " using only 1 column (and 1 space) while possible
 set report=0                	      " : commands always print changed line count.
-set ruler                   	      " Show some info, even without statuslines.
 set ruler                   	      " show the cursor position all the time
 set scrolloff=3             	      " Keep 3 context lines above and below the cursor
 set shiftround              	      " rounds indent to a multiple of shiftwidth
@@ -218,13 +224,8 @@ set vb t_vb=                	      " Disable all bells.  I hate ringing/flashing
 set virtualedit=block       	      " Let cursor move past the last char in <C-v> mode
 set wildignore+=*.o,*.obj,.git,*.pyc  " Ignore these files when completing
 set wildmenu                  	      " Menu completion in command mode on <Tab>
-set wildmode=longest,full             	      " <Tab> cycles between all matching choices.
+set wildmode=longest,full             " <Tab> cycles between all matching choices.
 set wrapmargin=0
-
-" Disable stupid backups and swap files
-set nobackup
-set nowritebackup
-set noswapfile
 
 " Search with tab
 set wildcharm=<C-z>
@@ -343,6 +344,8 @@ autocmd CursorMoved * exe printf('match IncSearch /\V\<%s\>/', escape(expand('<c
 " the directory of the current file for example, to not change directory if the file is in /tmp.
 autocmd BufEnter * if expand("%:p:h") !~ '^/tmp' | silent! lcd %:p:h | endif
 
+" javascript-libraries-syntaxlet g:used_javascript_libs =
+let g:used_javascript_libs = 'angularjs,jquery'
 " Vim expand region
 vmap v <Plug>(expand_region_expand)
 vmap <C-v> <Plug>(expand_region_shrink)

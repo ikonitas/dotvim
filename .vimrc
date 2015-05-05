@@ -100,8 +100,9 @@ nmap <F8> :TagbarToggle<CR>
 
 " Spell check
 map <F9> :setlocal spell! spelllang=en_us<CR>
+
 " Fold with space
-noremap <Space> za
+noremap <leader>z za
 " Esc
 :imap jj <Esc>
 
@@ -175,8 +176,10 @@ set encoding=utf-8                    " The encoding displayed.
 set expandtab               	      " Use spaces, not tabs, for autoindent/tab key.
 set ffs=unix,dos,mac        	      " Try recognizing dos, unix, and mac line endings.
 set fileencoding=utf-8                " The encoding written to file.
+set foldenable                        " Enable Fold 
 set foldcolumn=0            	      " show the fold column
 set foldlevel=99            	      " don't fold by default
+set foldlevelstart=10            	  " don't fold by default
 set foldmethod=indent       	      " allow us to fold on indents
 set hidden                            " Hides buffers instead of closing them
 set hlsearch                	      " Highlight searches by default.
@@ -343,4 +346,17 @@ autocmd BufEnter * if expand("%:p:h") !~ '^/tmp' | silent! lcd %:p:h | endif
 " Vim expand region
 vmap v <Plug>(expand_region_expand)
 vmap <C-v> <Plug>(expand_region_shrink)
+
+" Faster execution for git repositories
+let g:ctrlp_use_caching = 0
+if executable('ag')
+    set grepprg=ag\ --nogroup\ --nocolor
+
+    let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
+else
+  let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files . -co --exclude-standard', 'find %s -type f']
+  let g:ctrlp_prompt_mappings = {
+    \ 'AcceptSelection("e")': ['<space>', '<cr>', '<2-LeftMouse>'],
+    \ }
+endif
 

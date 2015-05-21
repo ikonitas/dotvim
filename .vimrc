@@ -306,21 +306,7 @@ nmap <leader>p :call Class()<CR>
 colorscheme molokai
 
 " Adds coding utf-8 coding "
-autocmd BufWritePre,FileWritePre *.py   ks|call LastMod()|'s
-fun LastMod()
-    for line in getline(1, 20)
-        if line =~ "# -*-"
-            return
-        endif
-    endfor
-  if line("$") > 1
-    let l = 0
-  else
-    let l = line("$")
-  endif
-  exe "0," . l ."g/#/s/#.*/#".
-  \" -*- coding: utf-8 -*-"
-endfun
+autocmd BufWritePre *.py if getline(1) != '# -*- coding: utf-8 -*-' | call append(0, '# -*- coding: utf-8 -*-' ) | call append(1, '') | endif
 
 " YouCompleteMe got to definition
 nnoremap <leader>d :YcmCompleter GoToDefinitionElseDeclaration<CR>

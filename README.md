@@ -3,14 +3,16 @@
 
 ##Instalation:
 
-  1) git clone https://github.com/zatan/dotvim ~/.vim
+  1) ``git clone https://github.com/zatan/dotvim ~/.vim``
   
-  2) git clone https://github.com/gmarik/vundle.git ~/.vim/bundle/vundle
+  2) ``git clone https://github.com/gmarik/vundle.git ~/.vim/bundle/vundle``
   
-  3) ln -s ~/.vim/.vimrc ~/.vimrc
-  
-  4) :BundleInstall
+  3) ``ln -s ~/.vim/.vimrc ~/.vimrc``
 
-  5) cd ~/.vim/bundle/YouCompleteMe 
+  4) ``pip install flake8``
+  
+  5) ``:BundleInstall`` inside vim
 
-  6) ./install.sh --clang-completer
+  6) ``cd ~/.vim/bundle/YouCompleteMe``
+
+  7) ``./install.sh --clang-completeri``

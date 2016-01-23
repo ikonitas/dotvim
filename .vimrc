@@ -28,6 +28,7 @@ Bundle 'othree/javascript-libraries-syntax.vim'
 Bundle 'tpope/vim-surround'
 Bundle 'chase/vim-ansible-yaml'
 Bundle 'terryma/vim-expand-region'
+Bundle 'tpope/vim-commentary'
 
 " Map Leader
 let mapleader="\<Space>"
@@ -134,7 +135,7 @@ nmap <leader>c :SyntasticCheck<Cr>
 
 " Ignore PEP8 rules
 let g:syntastic_python_checkers = ['flake8']
-let g:syntastic_python_flake8_args="--ignore=W293,E501,W391"
+let g:syntastic_python_flake8_args="--ignore=E501"
 
 """"""""
 " JEDI "
@@ -241,7 +242,7 @@ au FileType python setlocal expandtab smarttab shiftwidth=4 tabstop=4 textwidth=
 
 " Different work configs
 
-if hostname() == "ed"
+if hostname() == "edvinas-Z97-HD3"
     autocmd FileType xhtml,xml,css,less,javascript setlocal expandtab shiftwidth=4 tabstop=4 softtabstop=4
     au FileType html,htmldjango setlocal shiftwidth=4 tabstop=4 softtabstop=4
     au FileType python setlocal expandtab smarttab shiftwidth=4 tabstop=4 textwidth=100 softtabstop=4 colorcolumn=100
@@ -347,3 +348,4 @@ else
     \ }
 endif
 
+set tags=./tags,tags;$HOME

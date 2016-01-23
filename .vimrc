@@ -105,8 +105,6 @@ map <F9> :setlocal spell! spelllang=en_us<CR>
 " Fold with space
 nnoremap <leader>z za
 
-" Esc
-:imap jj <Esc>
 
 
 """""""""

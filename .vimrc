@@ -29,6 +29,8 @@ Bundle 'tpope/vim-surround'
 Bundle 'chase/vim-ansible-yaml'
 Bundle 'terryma/vim-expand-region'
 Bundle 'tpope/vim-commentary'
+Bundle 'SirVer/ultisnips'
+
 
 " Map Leader
 let mapleader="\<Space>"
@@ -245,9 +247,11 @@ au FileType python setlocal expandtab smarttab shiftwidth=4 tabstop=4 textwidth=
 " Different work configs
 
 if hostname() == "edvinas-Z97-HD3"
+" if hostname() == "edvinas-Z97-HD3S"
     autocmd FileType xhtml,xml,css,less,javascript setlocal expandtab shiftwidth=4 tabstop=4 softtabstop=4
     au FileType html,htmldjango setlocal shiftwidth=4 tabstop=4 softtabstop=4
     au FileType python setlocal expandtab smarttab shiftwidth=4 tabstop=4 textwidth=100 softtabstop=4 colorcolumn=100
+    au FileType python set ft=python.django 
 
     "Remove trailing whitespaces only after some text."
     autocmd BufWritePre *.css :%s/\S\zs\s\+$//e
@@ -259,6 +263,7 @@ if hostname() == "edvinas-Z97-HD3"
 else
     autocmd FileType xhtml,xml,css,less,javascript,scss setlocal expandtab shiftwidth=2 tabstop=2 softtabstop=2
     au FileType html,htmldjango setlocal shiftwidth=2 tabstop=2 softtabstop=2
+    au FileType python set ft=python.django 
 
     "Remove trailing whitespaces."
     autocmd BufWritePre *.css :%s/\s\+$//e
@@ -267,6 +272,7 @@ else
     autocmd BufWritePre *.py :%s/\s\+$//e
     autocmd BufWritePre *.html :%s/\s\+$//e
     autocmd BufWritePre *.js :%s/\s\+$//e
+    autocmd BufWritePre *.py :%s/\s\+$//e
 endif
 
 """"""""""
@@ -351,3 +357,11 @@ else
 endif
 
 set tags=./tags,tags;$HOME
+
+" Trigger configuration. Do not use <tab> if you use https://github.com/Valloric/YouCompleteMe.
+let g:UltiSnipsExpandTrigger="<c-j>"
+let g:UltiSnipsJumpForwardTrigger="<c-c>"
+let g:UltiSnipsJumpBackwardTrigger="<c-b>"
+let g:UltiSnipsListSnippets="<f4>"
+
+imap <c-x> <c-x>=UltiSnips_ListSnippets()<cr>

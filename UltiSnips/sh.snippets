@@ -3,7 +3,10 @@ function cdsrc {
   cd $VIRTUAL_ENV/src/
 }
 
-alias cds=cdsrc
+function cdbin {
+  cd $VIRTUAL_ENV/bin/
+}
+
 
 export DJANGO_SETTINGS_MODULE='$1.settings.local'
 export DJANGO_DATABASE_NAME='$1'

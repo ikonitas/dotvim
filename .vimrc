@@ -30,6 +30,7 @@ Bundle 'chase/vim-ansible-yaml'
 Bundle 'terryma/vim-expand-region'
 Bundle 'tpope/vim-commentary'
 Bundle 'SirVer/ultisnips'
+Bundle 'chip/vim-fat-finger'
 
 
 " Map Leader

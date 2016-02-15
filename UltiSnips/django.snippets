@@ -3,6 +3,10 @@ priority -50
 # This files will define django snippets from sublime text djaneiro
 # FORMS SNIPPETS
 
+snippet python_2_unicode_compatible "Import python_2_unicode_compatible decorator" b
+from django.utils.encoding import python_2_unicode_compatible
+endsnippet
+
 snippet form "Form" b
 class ${1:FORMNAME}(forms.Form):
 
@@ -123,11 +127,13 @@ endsnippet
 # MODELS SNIPPETS
 
 snippet model "Model" b
+@python_2_unicode_compatible
 class ${1:MODELNAME}(models.Model):
 	${0}
 	class Meta:
 		verbose_name = "$1"
 		verbose_name_plural = "$1s"
+		ordering = ${2}
 
 	def __str__(self):
 		return super($1, self).__str__()
@@ -169,11 +175,11 @@ ${1:FIELDNAME} = models.BooleanField($2)
 endsnippet
 
 snippet created_at "DateTimeFiled" b
-${1:FIELDNAME} = models.DateTimeField(auto_now_add=True)
+created_at= models.DateTimeField(auto_now_add=True)
 endsnippet
 
 snippet updated_at "DateTimeFiled" b
-${1:FIELDNAME} = models.DateTimeField(auto_now=True)
+updated_at = models.DateTimeField(auto_now=True)
 endsnippet
 
 snippet mchar "CharField" b
@@ -291,9 +297,17 @@ class ${2}Admin(admin.ModelAdmin):
 	readonly_fields = ('${6}',)
 	fieldsets = (
 		(
-			'', {
-			   'fields': (
-			   )
+			'${1}', {
+				'fields': (
+					'',
+				)
+			}
+		),
+		(
+			'Meta', {
+			    'classes': ('collapse',), 
+				'fields': (
+				)
 			}
 		),
 	)
@@ -318,9 +332,12 @@ class ${1:MODEL_NAME}DetailView(DetailView):
 endsnippet
 
 snippet listview "Generic List View" b
-class ${1:MODEL_NAME}ListView(ListView):
+class $1ListView(ListView):
 	model = ${1:MODEL_NAME}
-	template_name = "${2:TEMPLATE_NAME}"
+
+	def get_context_data(self, **kwargs):
+		context = super($1ListView, self).get_context_data(**kwargs)
+		return context
 endsnippet
 
 snippet stackedinline "Stacked Inline" b

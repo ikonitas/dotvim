@@ -53,6 +53,10 @@ nmap <leader>a :Rooter<CR>:Ack! --ignore-dir=migrations --ignore-dir=cache --ign
 " Set working directory
 nnoremap <leader>. :lcd %:p:h<CR>
 
+
+" import ipdb;
+nnoremap <leader>p oimport ipdb;ipdb.set_trace()<esc>
+
 " Save file
 nnoremap <Leader>w :w<CR>
 
@@ -123,7 +127,7 @@ let g:ctrlp_custom_ignore = 'node_modules\|DS_Store\|git'
 "SYNTASTIC "
 """""""""""""
 let g:syntastic_always_populate_loc_list=1
-let g:syntastic_javascript_checkers = ['jshint']
+let g:syntastic_javascript_checkers = ['jshint', 'rst']
 let g:syntastic_javascript_jshint_exec='/usr/local/bin/jshint'
 
 " Change config edit file /var/lib/gems/1.9.1/gems/scss-lint-0.32.0/config/default.yml
@@ -139,6 +143,7 @@ nmap <leader>c :SyntasticCheck<Cr>
 " Ignore PEP8 rules
 let g:syntastic_python_checkers = ['flake8']
 let g:syntastic_python_flake8_args="--ignore=E501"
+
 
 """"""""
 " JEDI "
@@ -303,12 +308,6 @@ autocmd BufWinEnter * call ResCur()
 augroup END
 """"""""""""""""""""""""""""""""""""""""""
 
-" Insert IPDB """""""""""""""""
-function! Class()
-r~/.vim/txt/ipdb.txt
-endfunction
-nmap <leader>p :call Class()<CR>
-""""""""""""""""""""""""""""""""
 colorscheme molokai
 
 " Adds coding utf-8 coding "

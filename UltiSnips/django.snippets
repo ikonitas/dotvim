@@ -1,16 +1,42 @@
 priority -50
 
 
+snippet import_reverse_lazy "Import reverse_lazy" b
+from django.core.urlresolvers import reverse_lazy
+endsnippet
+
+
+snippet import_deleteview "Import DeleteView" b
+from django.views.generic.edit import DeleteView
+endsnippet
+
+
+snippet import_formview "Import FormView" b
+from django.views.generic import FormView
+endsnippet
+
+
+snippet import_updateview "Import UpdateView" b
+from django.views.generic.edit import UpdateView
+endsnippet
+
+
 snippet import_python_2_unicode_compatible "Import python_2_unicode_compatible decorator" b
 from django.utils.encoding import python_2_unicode_compatible
 endsnippet
+
 
 snippet import_listview "Import ListView" b
 from django.views.generic.list import ListView
 endsnippet
 
+
 snippet import_templateview "Import TemplateView" b
 from django.views.generic import TemplateView
+endsnippet
+
+snippet import_createview "Import CreateView" b
+from django.views.generic.edit import CreateView
 endsnippet
 
 
@@ -50,6 +76,7 @@ class ${1:MODELNAME}Form(forms.ModelForm):
 
 	class Meta:
 		model = $1
+		fields = (${2})
 endsnippet
 
 
@@ -82,11 +109,17 @@ endsnippet
 snippet createview "Generic Create View" b
 class $1CreateView(CreateView):
 	model = ${1:MODEL_NAME}
+	form_class = $1MilestoneForm
 	template_name = "${2:TEMPLATE_NAME}"
+	success_url = reverse_lazy()
 
 	def get_context_data(self, **kwargs):
-		context = super($1ListView, self).get_context_data(**kwargs)
+		context = super($1CreateView, self).get_context_data(**kwargs)
 		return context
+
+	def form_valid(self, form):
+		messages.success(self.request, '$1 was added successfully.')
+		return super($1CreateView, self).form_valid(form)
 endsnippet
 
 
@@ -94,10 +127,16 @@ snippet deleteview "Generic Delete View" b
 class $1DeleteView(DeleteView):
 	model = ${1:MODEL_NAME}
 	template_name = "${2:TEMPLATE_NAME}"
+	success_url = reverse_lazy(${3})
 
 	def get_context_data(self, **kwargs):
-		context = super($1ListView, self).get_context_data(**kwargs)
+		context = super($1DeleteView, self).get_context_data(**kwargs)
 		return context
+
+	def delete(self, request, *args, **kwargs):
+		response = super($1DeleteView, self).delete(request, *args, **kwargs)
+		messages.success(request, '$1 was deleted successfully.')
+		return response
 endsnippet
 
 snippet detailview "Generic Detail View" b
@@ -130,9 +169,10 @@ endsnippet
 snippet updateview "Generic Update View" b
 class $1UpdateView(UpdateView):
 	model = ${1:MODEL_NAME}
+	form_class = $1Form
 	template_name = "${2:TEMPLATE_NAME}"
 
 	def get_context_data(self, **kwargs):
-		context = super($1ListView, self).get_context_data(**kwargs)
+		context = super($1UpdateView, self).get_context_data(**kwargs)
 		return context
 endsnippet

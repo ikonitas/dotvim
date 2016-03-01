@@ -55,7 +55,7 @@ nnoremap <leader>. :lcd %:p:h<CR>
 
 
 " import ipdb;
-nnoremap <leader>p oimport ipdb;ipdb.set_trace()<esc>
+nnoremap <leader>p oimport ipdb; ipdb.set_trace()<esc>
 
 " Save file
 nnoremap <Leader>w :w<CR>

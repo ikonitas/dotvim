@@ -85,20 +85,22 @@ snippet adminview "Model Admin View" b
 class $1Admin(admin.ModelAdmin):
 	list_display = ('${3}',)
 	list_filter = ('${4}',)
-	search_fields = ['${5}']
 	readonly_fields = ('${6}',)
+	search_fields = ['${5}']
+	date_hierarchy = (${7})
 	fieldsets = (
 		(
 			'$1', {
 				'fields': (
-					'',
+					${8}	
 				)
 			}
 		),
 		(
 			'Meta', {
-			    'classes': ('collapse',), 
+				'classes': ('collapse',), 
 				'fields': (
+					${9}
 				)
 			}
 		),

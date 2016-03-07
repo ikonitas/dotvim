@@ -54,6 +54,9 @@ nmap <leader>a :Rooter<CR>:Ack! --ignore-dir=migrations --ignore-dir=cache --ign
 nnoremap <leader>. :lcd %:p:h<CR>
 
 
+" opem vimrc
+nnoremap <leader>rc :e $MYVIMRC<CR>
+
 " import ipdb;
 nnoremap <leader>p oimport ipdb; ipdb.set_trace()<esc>
 
@@ -250,8 +253,8 @@ au FileType python setlocal expandtab smarttab shiftwidth=4 tabstop=4 textwidth=
 
 " Different work configs
 
-" if hostname() == "edvinas-Z97-HD3"
-if hostname() == "edvinas-Z97-HD3S"
+if hostname() == "edvinas-Z97-HD3"
+" if hostname() == "edvinas-Z97-HD3S"
     autocmd FileType xhtml,xml,css,less,javascript setlocal expandtab shiftwidth=4 tabstop=4 softtabstop=4
     au FileType html,htmldjango setlocal shiftwidth=4 tabstop=4 softtabstop=4
     au FileType python setlocal expandtab smarttab shiftwidth=4 tabstop=4 textwidth=100 softtabstop=4 colorcolumn=100

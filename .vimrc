@@ -314,7 +314,10 @@ augroup END
 colorscheme molokai
 
 " Adds coding utf-8 coding "
-autocmd BufWritePre *.py if getline(1) != '# -*- coding: utf-8 -*-' | call append(0, '# -*- coding: utf-8 -*-' ) | call append(1, '') | endif
+autocmd BufWritePre *.py if getline(1) != '# -*- coding: utf-8 -*-' | call append(0, '# -*- coding: utf-8 -*-' ) | call append(1, 'from __future__ import unicode_literals') | call append(2, '') | endif
+
+" Adds unicode literals"
+autocmd BufWritePre *.py if getline(2) != 'from __future__ import unicode_literals' | call append(1, 'from __future__ import unicode_literals') | endif
 
 " YouCompleteMe got to definition
 nnoremap <leader>d :YcmCompleter GoToDefinitionElseDeclaration<CR>

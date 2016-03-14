@@ -1,11 +1,6 @@
 priority -50
 
 
-snippet import_reverse_lazy "Import reverse_lazy" b
-from django.core.urlresolvers import reverse_lazy
-endsnippet
-
-
 snippet import_deleteview "Import DeleteView" b
 from django.views.generic.edit import DeleteView
 endsnippet
@@ -21,11 +16,6 @@ from django.views.generic.edit import UpdateView
 endsnippet
 
 
-snippet import_python_2_unicode_compatible "Import python_2_unicode_compatible decorator" b
-from django.utils.encoding import python_2_unicode_compatible
-endsnippet
-
-
 snippet import_listview "Import ListView" b
 from django.views.generic.list import ListView
 endsnippet
@@ -35,9 +25,26 @@ snippet import_templateview "Import TemplateView" b
 from django.views.generic import TemplateView
 endsnippet
 
+
 snippet import_createview "Import CreateView" b
 from django.views.generic.edit import CreateView
 endsnippet
+
+
+snippet import_detailview "Import DetailView" b
+from django.views.generic.detail import DetailView
+endsnippet
+
+
+snippet import_python_2_unicode_compatible "Import python_2_unicode_compatible decorator" b
+from django.utils.encoding import python_2_unicode_compatible
+endsnippet
+
+
+snippet import_reverse_lazy "Import reverse_lazy" b
+from django.core.urlresolvers import reverse_lazy
+endsnippet
+
 
 
 snippet created_at "DateTimeFiled" b
@@ -142,9 +149,9 @@ class $1DeleteView(DeleteView):
 endsnippet
 
 snippet detailview "Generic Detail View" b
-class ${1:MODEL_NAME}DetailView(DetailView):
+class $1DetailView(DetailView):
 	model = ${1:MODEL_NAME}
-	template_name = "${2:TEMPLATE_NAME}"
+	template_name = "$1_detail.html"
 
 	def get_context_data(self, **kwargs):
 		context = super($1ListView, self).get_context_data(**kwargs)

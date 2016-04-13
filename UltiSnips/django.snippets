@@ -46,6 +46,10 @@ from django.core.urlresolvers import reverse_lazy
 endsnippet
 
 
+snippet import_get_user_model "Import get_user_model" b
+from django.contrib.auth import get_user_model
+endsnippet
+
 
 snippet created_at "DateTimeFiled" b
 created_at = models.DateTimeField(auto_now_add=True)
@@ -94,7 +98,7 @@ class $1Admin(admin.ModelAdmin):
 	list_filter = ('${4}',)
 	readonly_fields = ('${6}',)
 	search_fields = ['${5}']
-	date_hierarchy = (${7})
+	date_hierarchy = ${7}
 	fieldsets = (
 		(
 			'$1', {
@@ -107,7 +111,7 @@ class $1Admin(admin.ModelAdmin):
 			'Meta', {
 				'classes': ('collapse',), 
 				'fields': (
-					${9}
+				    ${9}
 				)
 			}
 		),
@@ -154,7 +158,7 @@ class $1DetailView(DetailView):
 	template_name = "$1_detail.html"
 
 	def get_context_data(self, **kwargs):
-		context = super($1ListView, self).get_context_data(**kwargs)
+		context = super($1DetailView, self).get_context_data(**kwargs)
 		return context
 endsnippet
 
@@ -185,3 +189,5 @@ class $1UpdateView(UpdateView):
 		context = super($1UpdateView, self).get_context_data(**kwargs)
 		return context
 endsnippet
+
+

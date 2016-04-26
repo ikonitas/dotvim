@@ -64,7 +64,7 @@ nnoremap <leader>p oimport ipdb; ipdb.set_trace()<esc>
 nnoremap <Leader>w :w<CR>
 
 " Import ctags
-nnoremap <F7> :!ctags -R --fields=+l --languages=python --python-kinds=-iv -f $OLDPWD=tags $(python -c "import os, sys; print(' '.join('{}'.format(d) for d in sys.path if os.path.isdir(d) and not d.startswith('/usr/lib')))")
+nnoremap <F7> :!ctags -R --fields=+l --languages=python --python-kinds=-iv -f tags $(python -c "import os, sys; print(' '.join('{}'.format(d) for d in sys.path if os.path.isdir(d) and not d.startswith('/usr/lib')))")
 
 " Visual line mode
 nmap <Leader><Leader> V
@@ -322,6 +322,7 @@ autocmd BufWritePre *.py if search('coding: utf-8', 'n') == 0 | call append(0, '
 " Adds unicode literals"
 autocmd BufWritePre *.py if search('from __future__ import unicode_literals', 'n') == 0 | call append(1, 'from __future__ import unicode_literals') | endif
 
+let g:ycm_collect_identifiers_from_tags_files = 1
 " YouCompleteMe got to definition
 nnoremap <leader>d :YcmCompleter GoToDefinitionElseDeclaration<CR>
 
@@ -362,8 +363,6 @@ else
     \ 'AcceptSelection("e")': ['<space>', '<cr>', '<2-LeftMouse>'],
     \ }
 endif
-
-set tags=./tags,tags;$HOME
 
 " Trigger configuration. Do not use <tab> if you use https://github.com/Valloric/YouCompleteMe.
 let g:UltiSnipsExpandTrigger="<c-j>"

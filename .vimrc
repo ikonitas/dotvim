@@ -3,7 +3,6 @@
 " Pathogen (helps managed packages on vim)
 execute pathogen#infect()
 
-
 set nocompatible
 filetype off
 
@@ -31,6 +30,7 @@ Bundle 'terryma/vim-expand-region'
 Bundle 'tpope/vim-commentary'
 Bundle 'SirVer/ultisnips'
 Bundle 'chip/vim-fat-finger'
+Bundle 'tpope/vim-ragtag'
 
 
 " Map Leader
@@ -63,8 +63,11 @@ nnoremap <leader>p oimport ipdb; ipdb.set_trace()<esc>
 " Save file
 nnoremap <Leader>w :w<CR>
 
-" Import ctags
-nnoremap <F7> :!ctags -R --fields=+l --languages=python --python-kinds=-iv -f tags $(python -c "import os, sys; print(' '.join('{}'.format(d) for d in sys.path if os.path.isdir(d) and not d.startswith('/usr/lib')))")
+" C-tags
+function! UpdateTags()
+    silent execute "!python ~/.vim/plugin/ctags.py"
+endfunction
+autocmd BufWritePost *.py call UpdateTags()
 
 " Visual line mode
 nmap <Leader><Leader> V
@@ -240,6 +243,9 @@ set wildmenu                  	      " Menu completion in command mode on <Tab>
 set wildmode=longest,full             " <Tab> cycles between all matching choices.
 set wrapmargin=0
 
+" Save tags.
+set tags=$PROJECT_DIR/.git/.tags
+
 " Search with tab
 set wildcharm=<C-z>
 cmap <expr> <Tab> getcmdtype() == "/" ? "<CR>/<C-r>/" : "<C-z>"
@@ -370,9 +376,6 @@ let g:UltiSnipsJumpForwardTrigger="<c-c>"
 let g:UltiSnipsJumpBackwardTrigger="<c-b>"
 let g:UltiSnipsListSnippets="<f4>"
 
-imap <c-x> <c-x>=UltiSnips_ListSnippets()<cr>
-
-
 " Default mapping
 "
 let g:multi_cursor_use_default_mapping=0
@@ -382,5 +385,5 @@ let g:multi_cursor_skip_key='<C-x>'
 let g:multi_cursor_quit_key='<Esc>'
 
 
+let g:ycm_collect_identifiers_from_tags_files = 1
 let g:ycm_path_to_python_interpreter="/usr/bin/python"
-

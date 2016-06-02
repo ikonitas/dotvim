@@ -66,6 +66,7 @@ nnoremap <Leader>w :w<CR>
 " C-tags
 function! UpdateTags()
     silent execute "!python ~/.vim/plugin/ctags.py"
+    :redraw!
 endfunction
 autocmd BufWritePost *.py call UpdateTags()
 

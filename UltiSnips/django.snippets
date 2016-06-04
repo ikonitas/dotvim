@@ -118,7 +118,7 @@ endsnippet
 snippet createview "Generic Create View" b
 class $1CreateView(CreateView):
 	model = ${1:MODEL_NAME}
-	form_class = $1MilestoneForm
+	form_class = $1Form
 	template_name = "${2:TEMPLATE_NAME}"
 	success_url = reverse_lazy()
 

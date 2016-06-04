@@ -3,7 +3,6 @@
 " Pathogen (helps managed packages on vim)
 execute pathogen#infect()
 
-
 set nocompatible
 filetype off
 
@@ -31,6 +30,7 @@ Bundle 'terryma/vim-expand-region'
 Bundle 'tpope/vim-commentary'
 Bundle 'SirVer/ultisnips'
 Bundle 'chip/vim-fat-finger'
+Bundle 'tpope/vim-ragtag'
 
 
 " Map Leader
@@ -62,6 +62,13 @@ nnoremap <leader>p oimport ipdb; ipdb.set_trace()<esc>
 
 " Save file
 nnoremap <Leader>w :w<CR>
+
+" C-tags
+function! UpdateTags()
+    silent execute "!python ~/.vim/plugin/ctags.py"
+    :redraw!
+endfunction
+autocmd BufWritePost *.py call UpdateTags()
 
 " Visual line mode
 nmap <Leader><Leader> V
@@ -237,6 +244,9 @@ set wildmenu                  	      " Menu completion in command mode on <Tab>
 set wildmode=longest,full             " <Tab> cycles between all matching choices.
 set wrapmargin=0
 
+" Save tags.
+set tags=$PROJECT_DIR/.git/.tags
+
 " Search with tab
 set wildcharm=<C-z>
 cmap <expr> <Tab> getcmdtype() == "/" ? "<CR>/<C-r>/" : "<C-z>"
@@ -253,8 +263,8 @@ au FileType python setlocal expandtab smarttab shiftwidth=4 tabstop=4 textwidth=
 
 " Different work configs
 
-if hostname() == "edvinas-Z97-HD3"
-" if hostname() == "edvinas-Z97-HD3S"
+" if hostname() == "edvinas-Z97-HD3"
+if hostname() == "edvinas-Z97-HD3S"
     autocmd FileType xhtml,xml,css,less,javascript setlocal expandtab shiftwidth=4 tabstop=4 softtabstop=4
     au FileType html,htmldjango setlocal shiftwidth=4 tabstop=4 softtabstop=4
     au FileType python setlocal expandtab smarttab shiftwidth=4 tabstop=4 textwidth=100 softtabstop=4 colorcolumn=100
@@ -314,11 +324,12 @@ augroup END
 colorscheme molokai
 
 " Adds coding utf-8 coding "
-autocmd BufWritePre *.py if getline(1) != '# -*- coding: utf-8 -*-' | call append(0, '# -*- coding: utf-8 -*-' ) | call append(1, 'from __future__ import unicode_literals') | call append(2, '') | endif
+autocmd BufWritePre *.py if search('coding: utf-8', 'n') == 0 | call append(0, '# -*- coding: utf-8 -*-' ) | endif
 
 " Adds unicode literals"
-autocmd BufWritePre *.py if getline(2) != 'from __future__ import unicode_literals' | call append(1, 'from __future__ import unicode_literals') | endif
+autocmd BufWritePre *.py if search('from __future__ import unicode_literals', 'n') == 0 | call append(1, 'from __future__ import unicode_literals') | endif
 
+let g:ycm_collect_identifiers_from_tags_files = 1
 " YouCompleteMe got to definition
 nnoremap <leader>d :YcmCompleter GoToDefinitionElseDeclaration<CR>
 
@@ -360,12 +371,20 @@ else
     \ }
 endif
 
-set tags=./tags,tags;$HOME
-
 " Trigger configuration. Do not use <tab> if you use https://github.com/Valloric/YouCompleteMe.
 let g:UltiSnipsExpandTrigger="<c-j>"
 let g:UltiSnipsJumpForwardTrigger="<c-c>"
 let g:UltiSnipsJumpBackwardTrigger="<c-b>"
 let g:UltiSnipsListSnippets="<f4>"
 
-imap <c-x> <c-x>=UltiSnips_ListSnippets()<cr>
+" Default mapping
+"
+let g:multi_cursor_use_default_mapping=0
+let g:multi_cursor_next_key='<C-n>'
+let g:multi_cursor_prev_key='<C-p>'
+let g:multi_cursor_skip_key='<C-x>'
+let g:multi_cursor_quit_key='<Esc>'
+
+
+let g:ycm_collect_identifiers_from_tags_files = 1
+let g:ycm_path_to_python_interpreter="/usr/bin/python"

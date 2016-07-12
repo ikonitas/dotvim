@@ -54,6 +54,9 @@ nmap <leader>a :Rooter<CR>:Ack! --ignore-dir=migrations --ignore-dir=cache --ign
 nnoremap <leader>. :lcd %:p:h<CR>
 
 
+" Save the file
+nnoremap <leader>w :w<CR>
+
 " opem vimrc
 nnoremap <leader>rc :e $MYVIMRC<CR>
 
@@ -95,7 +98,6 @@ nmap <C-n> :bnext<CR>
 " SWitch to previous buffer
 nmap <C-p> :bprev<CR>
 
-nmap <leader>f :CtrlP <CR>
 " Syntastic go to next errors
 nmap ]l :lnext<Cr>
 nmap [l :lprev<Cr>
@@ -123,7 +125,7 @@ map <F9> :setlocal spell! spelllang=en_us<CR>
 " Fold with space
 nnoremap <leader>z za
 
-
+nnoremap <leader>o :CtrlP <CR>
 
 """""""""
 " CTRLP "

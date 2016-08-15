@@ -191,3 +191,14 @@ class $1UpdateView(UpdateView):
 endsnippet
 
 
+snippet management_command "Management Comman" b
+from django.core.management.base import BaseCommand, CommandError
+
+
+class Command(BaseCommand):
+	help = ''
+
+	def handle(self, *args, **options):
+		
+		self.stdout.write(self.style.SUCCESS('Successfully done.'))
+endsnippet

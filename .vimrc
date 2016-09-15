@@ -45,9 +45,6 @@ command Wq wq
 command WQ wq
 " Sudo write this
 cmap w!! w !sudo tee %
-" ACK searching
-nmap <leader>a :Rooter<CR>:Ack! --ignore-dir=migrations --ignore-dir=cache --ignore-dir=logs --type-set=DUMB="*.pyc" --nobreak --noenv -i -Q  <c-r>=expand("<cword>")<cr>
-
 
 "nmap <Leader>a :Ack <c-r>=expand("<cword>")<cr>
 " Set working directory
@@ -108,6 +105,12 @@ nmap [l :lprev<Cr>
 :nmap \o :set paste!<CR>
 " Lets search through buffer files
 nmap ; :CtrlPBuffer<CR>
+
+nnoremap <Leader>t :CtrlPTag<CR>
+
+" Search with ack in git root repository.
+nnoremap <Leader>a :Rack 
+
 "Map sort function to a key
 vnoremap <Leader>s :sort<CR>
 " Moving between windows
@@ -390,3 +393,14 @@ let g:multi_cursor_quit_key='<Esc>'
 
 let g:ycm_collect_identifiers_from_tags_files = 1
 let g:ycm_path_to_python_interpreter="/usr/bin/python"
+
+function! Rack (args)
+let l:gitDir = system("git rev-parse --show-toplevel")  
+if l:gitDir =~ "Not a git repository"
+    execute 'Ack ' . a:args      
+    return  
+endif  
+execute 'Ack ' . a:args  .' ' . l:gitDir
+endfunction
+command! -bang -nargs=* -complete=file Rack call Rack(<q-args>)
+

@@ -256,23 +256,13 @@ set tags=$PROJECT_DIR/.git/.tags
 set wildcharm=<C-z>
 cmap <expr> <Tab> getcmdtype() == "/" ? "<CR>/<C-r>/" : "<C-z>"
 
-""""""""""
-" PYTHON "
-""""""""""
-au FileType python setlocal expandtab smarttab shiftwidth=4 tabstop=4 textwidth=80 softtabstop=4 colorcolumn=80
-
-
-""""""""
-" HTML "
-""""""""
-
 " Different work configs
 
 " if hostname() == "edvinas-Z97-HD3"
 if hostname() == "edvinas-Z97-HD3S"
     autocmd FileType xhtml,xml,css,less,javascript setlocal expandtab shiftwidth=4 tabstop=4 softtabstop=4
     au FileType html,htmldjango setlocal shiftwidth=4 tabstop=4 softtabstop=4
-    au FileType python setlocal expandtab smarttab shiftwidth=4 tabstop=4 textwidth=100 softtabstop=4 colorcolumn=100
+    au FileType python setlocal expandtab smarttab shiftwidth=4 tabstop=4 textwidth=99 softtabstop=4 colorcolumn=100
     au FileType python set ft=python.django 
 
     "Remove trailing whitespaces only after some text."
@@ -300,7 +290,7 @@ endif
 """"""""""
 " PYTHON "
 """"""""""
-au FileType python setlocal expandtab smarttab shiftwidth=4 tabstop=4 textwidth=100 softtabstop=4 colorcolumn=100
+au FileType python setlocal expandtab smarttab shiftwidth=4 tabstop=4 textwidth=99 softtabstop=4 colorcolumn=100
 
 """"""""""""""""""""
 " RE STRUCTED TEXT "

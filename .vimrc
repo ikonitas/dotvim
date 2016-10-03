@@ -324,7 +324,7 @@ autocmd BufWritePre *.py if search('coding: utf-8', 'n') == 0 | call append(0, '
 " Adds unicode literals"
 autocmd BufWritePre *.py if search('from __future__ import unicode_literals', 'n') == 0 | call append(1, 'from __future__ import unicode_literals') | endif
 
-let g:ycm_collect_identifiers_from_tags_files = 1
+let g:ycm_collect_identifiers_from_tags_files = 0
 " YouCompleteMe got to definition
 nnoremap <leader>d :YcmCompleter GoToDefinitionElseDeclaration<CR>
 

@@ -109,7 +109,7 @@ nmap ; :CtrlPBuffer<CR>
 nnoremap <Leader>t :CtrlPTag<CR>
 
 " Search with ack in git root repository.
-nnoremap <Leader>a :Rack 
+nnoremap <Leader>a :Rack <c-r>=expand("<cword>")<cr>
 
 "Map sort function to a key
 vnoremap <Leader>s :sort<CR>
@@ -392,5 +392,5 @@ if l:gitDir =~ "Not a git repository"
 endif  
 execute 'Ack ' . a:args  .' ' . l:gitDir
 endfunction
-command! -bang -nargs=* -complete=file Rack call Rack(<q-args>)
+command! -bang -nargs=* -complete=file Rack call Rack(<q-args>) 
 

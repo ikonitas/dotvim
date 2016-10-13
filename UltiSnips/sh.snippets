@@ -13,3 +13,14 @@ export DJANGO_DATABASE_NAME='$1'
 export PROJECT_DIR='/var/www/$1'
 export SPECTRUM=1
 endsnippet
+
+
+
+snippet tox_hook "Hook tox in git hooks" b
+#!/bin/sh
+
+if [ -f tox.ini ]
+	then
+		tox; 
+fi
+endsnippet

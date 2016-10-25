@@ -295,7 +295,7 @@ au FileType python setlocal expandtab smarttab shiftwidth=4 tabstop=4 textwidth=
 """"""""""""""""""""
 " RE STRUCTED TEXT "
 """"""""""""""""""""
-au FileType rst setlocal shiftwidth=4 tabstop=4 softtabstop=4 colorcolumn=80 textwidth=80
+au FileType rst setlocal shiftwidth=4 tabstop=4 softtabstop=4 colorcolumn=99 textwidth=99
 
 """""""""""""
 " FUNCTIONS "

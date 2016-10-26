@@ -225,6 +225,7 @@ set nostartofline           	      " Avoid moving cursor to BOL when jumping aro
 set noswapfile
 set nowritebackup
 set number        	      	      " Display line number
+set relativenumber
 set numberwidth=1             	      " using only 1 column (and 1 space) while possible
 set report=0                	      " : commands always print changed line count.
 set ruler                   	      " show the cursor position all the time
@@ -261,7 +262,7 @@ cmap <expr> <Tab> getcmdtype() == "/" ? "<CR>/<C-r>/" : "<C-z>"
 " if hostname() == "edvinas-Z97-HD3"
 if hostname() == "embor"
     autocmd FileType xhtml,xml,css,less,javascript setlocal expandtab shiftwidth=4 tabstop=4 softtabstop=4
-    au FileType html,htmldjango setlocal shiftwidth=4 tabstop=4 softtabstop=4
+    au FileType html,htmldjango setlocal shiftwidth=2 tabstop=2 softtabstop=2
     au FileType python setlocal expandtab smarttab shiftwidth=4 tabstop=4 textwidth=99 softtabstop=4 colorcolumn=100
     au FileType python set ft=python.django 
 

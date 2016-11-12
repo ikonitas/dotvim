@@ -192,6 +192,7 @@ filetype plugin indent on   " enable loading indent file for filetype
 set autoindent              	      " always set autoindenting on
 set autoread                          " Automatically reload files changed on disk.
 set backspace=2             	      " Allow backspacing over autoindent, EOL, and BOL
+set breakindent
 set clipboard=unnamedplus     	      " Settings clipboard to be able copy/paste
 set completeopt-=preview              " Remove preview window
 set confirm                 	      " Y-N-C prompt if closing with unsaved changes.

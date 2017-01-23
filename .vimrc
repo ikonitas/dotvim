@@ -31,6 +31,7 @@ Bundle 'tpope/vim-commentary'
 Bundle 'SirVer/ultisnips'
 Bundle 'chip/vim-fat-finger'
 Bundle 'tpope/vim-ragtag'
+Bundle 'fisadev/vim-isort'
 
 
 " Map Leader
@@ -113,6 +114,8 @@ nnoremap <Leader>a :Rack <c-r>=expand("<cword>")<cr>
 
 "Map sort function to a key
 vnoremap <Leader>s :sort<CR>
+nnoremap <Leader>is :Isort<CR>
+
 " Moving between windows
 nmap <silent> <C-Up> :wincmd k<CR>
 nmap <silent> <C-Down> :wincmd j<CR>
@@ -396,3 +399,5 @@ execute 'Ack ' . a:args  .' ' . l:gitDir
 endfunction
 command! -bang -nargs=* -complete=file Rack call Rack(<q-args>) 
 
+
+let g:vim_isort_map = '<C-i>'

@@ -1,38 +1,38 @@
 " Edvinas Jurevicius aka zatan "
 
-" Pathogen (helps managed packages on vim)
-execute pathogen#infect()
-
 set nocompatible
 filetype off
 
-set rtp+=~/.vim/bundle/vundle/
-call vundle#rc()
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
 
-" Let Vundle manage Vundle
-Bundle 'gmarik/vundle'
+Plugin 'VundleVim/Vundle.vim'
 
 " My Bundles
-Bundle 'mileszs/ack.vim'
-Bundle 'kien/ctrlp.vim'
-Bundle 'scrooloose/syntastic'
-Bundle 'groenewege/vim-less'
-Bundle 'hynek/vim-python-pep8-indent'
-Bundle 'bling/vim-airline'
-Bundle 'majutsushi/tagbar'
-Bundle "pangloss/vim-javascript"
-Bundle "Valloric/YouCompleteMe"
-Bundle 'airblade/vim-rooter'
-Bundle 'othree/javascript-libraries-syntax.vim'
-Bundle 'tpope/vim-surround'
-Bundle 'chase/vim-ansible-yaml'
-Bundle 'terryma/vim-expand-region'
-Bundle 'tpope/vim-commentary'
-Bundle 'SirVer/ultisnips'
-Bundle 'chip/vim-fat-finger'
-Bundle 'tpope/vim-ragtag'
-Bundle 'fisadev/vim-isort'
+Plugin 'mileszs/ack.vim'
+Plugin 'kien/ctrlp.vim'
+Plugin 'scrooloose/syntastic'
+Plugin 'groenewege/vim-less'
+Plugin 'hynek/vim-python-pep8-indent'
+Plugin 'bling/vim-airline'
+Plugin 'jmcantrell/vim-virtualenv'
+Plugin 'majutsushi/tagbar'
+Plugin 'Valloric/YouCompleteMe'
+Plugin 'airblade/vim-rooter'
+Plugin 'othree/javascript-libraries-syntax.vim'
+Plugin 'honza/vim-snippets'
+Plugin 'tpope/vim-surround'
+Plugin 'chase/vim-ansible-yaml'
+Plugin 'terryma/vim-expand-region'
+Plugin 'tpope/vim-commentary'
+Plugin 'SirVer/ultisnips'
+Plugin 'chip/vim-fat-finger'
+Plugin 'tpope/vim-ragtag'
+Plugin 'fisadev/vim-isort'
 
+call vundle#end() 
+
+filetype plugin indent on 
 
 " Map Leader
 let mapleader="\<Space>"
@@ -60,9 +60,6 @@ nnoremap <leader>rc :e $MYVIMRC<CR>
 
 " import ipdb;
 nnoremap <leader>p oimport ipdb; ipdb.set_trace()<esc>
-
-" Save file
-nnoremap <Leader>w :w<CR>
 
 " C-tags
 function! UpdateTags()
@@ -163,14 +160,6 @@ let g:syntastic_python_checkers = ['flake8']
 let g:syntastic_python_flake8_args="--ignore=E501,F405"
 
 
-""""""""
-" JEDI "
-""""""""
-" User buffers instead tabs on jedi
-let g:jedi#use_tabs_not_buffers = 0
-let g:jedi#show_call_signatures = 0
-
-
 """""""
 " ACK "
 """""""
@@ -185,9 +174,6 @@ let g:rooter_manual_only = 1
 
 syntax enable
 syntax on
-
-"filetype on                 " try to detect filetypes
-filetype plugin indent on   " enable loading indent file for filetype
 
 """"""""
 " SETS "
@@ -268,7 +254,7 @@ if hostname() == "embor"
     autocmd FileType xhtml,xml,css,less,javascript setlocal expandtab shiftwidth=4 tabstop=4 softtabstop=4
     au FileType html,htmldjango setlocal shiftwidth=2 tabstop=2 softtabstop=2
     au FileType python setlocal expandtab smarttab shiftwidth=4 tabstop=4 textwidth=99 softtabstop=4 colorcolumn=100
-    au FileType python set ft=python.django 
+    au FileType python set ft=python.django
 
     "Remove trailing whitespaces only after some text."
     autocmd BufWritePre *.css :%s/\S\zs\s\+$//e
@@ -280,7 +266,7 @@ if hostname() == "embor"
 else
     autocmd FileType xhtml,xml,css,less,javascript,scss setlocal expandtab shiftwidth=2 tabstop=2 softtabstop=2
     au FileType html,htmldjango setlocal shiftwidth=2 tabstop=2 softtabstop=2
-    au FileType python set ft=python.django 
+    au FileType python set ft=python.django
 
     "Remove trailing whitespaces."
     autocmd BufWritePre *.css :%s/\s\+$//e
@@ -329,7 +315,34 @@ autocmd BufWritePre *.py if search('coding: utf-8', 'n') == 0 | call append(0, '
 " Adds unicode literals"
 autocmd BufWritePre *.py if search('from __future__ import unicode_literals', 'n') == 0 | call append(1, 'from __future__ import unicode_literals') | endif
 
+
+" Trigger configuration. Do not use <tab> if you use https://github.com/Valloric/YouCompleteMe.
+let g:UltiSnipsJumpForwardTrigger="<c-c>"
+let g:UltiSnipsJumpBackwardTrigger="<c-b>"
+let g:UltiSnipsExpandTrigger="<c-j>"
+let g:UltiSnipsListSnippets="<f4>"
+let g:UltiSnipsSnippetsDir = "~/.vim/UltiSnips"
+
+" py << EOF
+" import os
+" import sys
+" if 'VIRTUAL_ENV' in os.environ:
+"   project_base_dir = os.environ['VIRTUAL_ENV']
+"   activate_this = os.path.join(project_base_dir, 'bin/activate_this.py')
+"   execfile(activate_this, dict(__file__=activate_this))
+"   if '3.5' in sys.version():
+"     let g:UltiSnipsUsePythonVersion = 3
+"   else:
+"     let g:UltiSnipsUsePythonVersion = 3
+" EOF
+
+nnoremap <F5> :YcmForceCompileAndDiagnostics<CR>:doautocmd FileType<CR>
+
+
 let g:ycm_collect_identifiers_from_tags_files = 0
+let g:ycm_register_as_syntastic_checker = 1
+let g:ycm_seed_identifiers_with_syntax=1
+
 " YouCompleteMe got to definition
 nnoremap <leader>d :YcmCompleter GoToDefinitionElseDeclaration<CR>
 
@@ -371,12 +384,6 @@ else
     \ }
 endif
 
-" Trigger configuration. Do not use <tab> if you use https://github.com/Valloric/YouCompleteMe.
-let g:UltiSnipsExpandTrigger="<c-j>"
-let g:UltiSnipsJumpForwardTrigger="<c-c>"
-let g:UltiSnipsJumpBackwardTrigger="<c-b>"
-let g:UltiSnipsListSnippets="<f4>"
-
 " Default mapping
 "
 let g:multi_cursor_use_default_mapping=0
@@ -385,9 +392,6 @@ let g:multi_cursor_prev_key='<C-p>'
 let g:multi_cursor_skip_key='<C-x>'
 let g:multi_cursor_quit_key='<Esc>'
 
-
-let g:ycm_collect_identifiers_from_tags_files = 1
-let g:ycm_path_to_python_interpreter="/usr/bin/python"
 
 function! Rack (args)
 let l:gitDir = system("git rev-parse --show-toplevel")  
@@ -399,5 +403,17 @@ execute 'Ack ' . a:args  .' ' . l:gitDir
 endfunction
 command! -bang -nargs=* -complete=file Rack call Rack(<q-args>) 
 
-
 let g:vim_isort_map = '<C-i>'
+
+" Function to set correct interpreters for the plugings
+function! PythonVersion ()
+    " if echo has('pyhton')
+    if has('python')
+        let g:UltiSnipsUsePythonVersion = 2
+        let g:ycm_python_binary_path = '/usr/bin/python2'
+    else
+        let g:UltiSnipsUsePythonVersion = 3
+        let g:ycm_python_binary_path = '/usr/bin/python3'
+    endif
+endfunction
+call PythonVersion()

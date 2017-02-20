@@ -298,7 +298,7 @@ augroup END
 colorscheme molokai
 
 " Adds coding utf-8 coding "
-autocmd BufWritePre *.py if has('pyton') && search('coding: utf-8', 'n') == 0 | call append(0, '# -*- coding: utf-8 -*-' ) | endif
+autocmd BufWritePre *.py if has('python') && search('coding: utf-8', 'n') == 0 | call append(0, '# -*- coding: utf-8 -*-' ) | endif
 
 " Adds unicode literals"
 autocmd BufWritePre *.py if has('python') && search('from __future__ import unicode_literals', 'n') == 0 | call append(1, 'from __future__ import unicode_literals') | endif

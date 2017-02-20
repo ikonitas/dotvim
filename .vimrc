@@ -249,39 +249,27 @@ cmap <expr> <Tab> getcmdtype() == "/" ? "<CR>/<C-r>/" : "<C-z>"
 
 " Different work configs
 
-" if hostname() == "edvinas-Z97-HD3"
+au FileType html,htmldjango setlocal shiftwidth=2 tabstop=2 softtabstop=2
+au FileType python setlocal expandtab smarttab shiftwidth=4 tabstop=4 textwidth=99 softtabstop=4 colorcolumn=99
+au FileType python set ft=python.django
+"Remove trailing whitespaces only after some text."
+autocmd BufWritePre *.css :%s/\S\zs\s\+$//e
+autocmd BufWritePre *.less :%s/\S\zs\s\+$//e
+autocmd BufWritePre *.scss :%s/\S\zs\s\+$//e
+autocmd BufWritePre *.py :%s/\S\zs\s\+$//e
+autocmd BufWritePre *.html :%s/\S\zs\s\+$//e
+autocmd BufWritePre *.js :%s/\S\zs\s\+$//e
+
 if hostname() == "embor"
     autocmd FileType xhtml,xml,css,less,javascript setlocal expandtab shiftwidth=4 tabstop=4 softtabstop=4
-    au FileType html,htmldjango setlocal shiftwidth=2 tabstop=2 softtabstop=2
-    au FileType python setlocal expandtab smarttab shiftwidth=4 tabstop=4 textwidth=99 softtabstop=4 colorcolumn=100
-    au FileType python set ft=python.django
-
-    "Remove trailing whitespaces only after some text."
-    autocmd BufWritePre *.css :%s/\S\zs\s\+$//e
-    autocmd BufWritePre *.less :%s/\S\zs\s\+$//e
-    autocmd BufWritePre *.scss :%s/\S\zs\s\+$//e
-    autocmd BufWritePre *.py :%s/\S\zs\s\+$//e
-    autocmd BufWritePre *.html :%s/\S\zs\s\+$//e
-    autocmd BufWritePre *.js :%s/\S\zs\s\+$//e
 else
     autocmd FileType xhtml,xml,css,less,javascript,scss setlocal expandtab shiftwidth=2 tabstop=2 softtabstop=2
-    au FileType html,htmldjango setlocal shiftwidth=2 tabstop=2 softtabstop=2
-    au FileType python set ft=python.django
-
-    "Remove trailing whitespaces."
-    autocmd BufWritePre *.css :%s/\s\+$//e
-    autocmd BufWritePre *.less :%s/\s\+$//e
-    autocmd BufWritePre *.scss :%s/\S\zs\s\+$//e
-    autocmd BufWritePre *.py :%s/\s\+$//e
-    autocmd BufWritePre *.html :%s/\s\+$//e
-    autocmd BufWritePre *.js :%s/\s\+$//e
-    autocmd BufWritePre *.py :%s/\s\+$//e
 endif
 
 """"""""""
 " PYTHON "
 """"""""""
-au FileType python setlocal expandtab smarttab shiftwidth=4 tabstop=4 textwidth=99 softtabstop=4 colorcolumn=100
+au FileType python setlocal expandtab smarttab shiftwidth=4 tabstop=4 textwidth=99 softtabstop=4 colorcolumn=99
 
 """"""""""""""""""""
 " RE STRUCTED TEXT "

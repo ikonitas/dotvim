@@ -91,19 +91,19 @@ class ${1:MODELNAME}Form(forms.ModelForm):
 endsnippet
 
 
-snippet adminview "Model Admin View" b
-@admin.register(${1})
+snippet modeladmin "Model Admin View" b
+@admin.register(${1:MODELNAME})
 class $1Admin(admin.ModelAdmin):
-	list_display = ('${3}',)
-	list_filter = ('${4}',)
-	readonly_fields = ('${6}',)
+	list_display = ('${2}',)
+	list_filter = ('${3}',)
+	readonly_fields = ('${4}',)
 	search_fields = ['${5}']
-	date_hierarchy = ${7}
+	date_hierarchy = ${6}
 	fieldsets = (
 		(
 			'$1', {
 				'fields': (
-					${8}	
+					${7}	
 				)
 			}
 		),
@@ -111,7 +111,7 @@ class $1Admin(admin.ModelAdmin):
 			'Meta', {
 				'classes': ('collapse',), 
 				'fields': (
-				    ${9}
+					${8}
 				)
 			}
 		),
@@ -122,7 +122,7 @@ endsnippet
 snippet createview "Generic Create View" b
 class $1CreateView(CreateView):
 	model = ${1:MODEL_NAME}
-	form_class = $1Form
+	form_class = $1CreateForm
 	template_name = "${2:TEMPLATE_NAME}"
 	success_url = reverse_lazy()
 
@@ -131,7 +131,12 @@ class $1CreateView(CreateView):
 		return context
 
 	def form_valid(self, form):
-		messages.success(self.request, '$1 was added successfully.')
+		messages.success(
+			self.request, 
+			'The user "{email}" was added successfully. You may edit it again below.'.format(
+				email=form.instance.email
+			)
+		)
 		return super($1CreateView, self).form_valid(form)
 endsnippet
 
@@ -161,6 +166,7 @@ class $1DetailView(DetailView):
 		context = super($1DetailView, self).get_context_data(**kwargs)
 		return context
 endsnippet
+
 
 snippet listview "Generic List View" b
 class $1ListView(ListView):
@@ -201,4 +207,31 @@ class Command(BaseCommand):
 	def handle(self, *args, **options):
 		
 		self.stdout.write(self.style.MIGRATE_SUCCESS('Successfully done.'))
+endsnippet
+
+
+
+snippet fieldsets "Add admin fieldset structure" b
+fieldsets = (
+	($1, {
+		'fields': ($2)
+	}),
+)
+endsnippet
+
+
+snippet has_add_permissions "Model admin method has_add_permission"
+def has_add_permission(self, request):
+	$1
+endsnippet
+
+
+snippet import_messages "Import django.contrib.messages"
+from django.contrib import messages
+endsnippet
+
+
+snippet changelist_view "Model admin changelist_view"
+def changelist_view(self, request, extra_context=None):
+	$1
 endsnippet

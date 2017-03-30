@@ -20,7 +20,6 @@ Plugin 'majutsushi/tagbar'
 Plugin 'Valloric/YouCompleteMe'
 Plugin 'airblade/vim-rooter'
 Plugin 'othree/javascript-libraries-syntax.vim'
-Plugin 'honza/vim-snippets'
 Plugin 'tpope/vim-surround'
 Plugin 'chase/vim-ansible-yaml'
 Plugin 'terryma/vim-expand-region'
@@ -405,3 +404,5 @@ function! PythonVersion ()
     endif
 endfunction
 call PythonVersion()
+
+set noswapfile

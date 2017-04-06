@@ -143,8 +143,8 @@ class $1CreateView(CreateView):
 	def form_valid(self, form):
 		messages.success(
 			self.request, 
-			'The user "{email}" was added successfully. You may edit it again below.'.format(
-				email=form.instance.email
+			'The {object} was added successfully. You may edit it again below.'.format(
+				object=form.instance
 			)
 		)
 		return super($1CreateView, self).form_valid(form)

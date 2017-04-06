@@ -51,6 +51,16 @@ from django.contrib.auth import get_user_model
 endsnippet
 
 
+snippet import_render_to_string "Import render_to_string" b
+from django.template.loader import render_to_string
+endsnippet
+
+
+snippet import_site_model "Import Site model" b
+from django.contrib.sites.models import Site
+endsnippet
+
+
 snippet created_at "DateTimeFiled" b
 created_at = models.DateTimeField(auto_now_add=True)
 endsnippet
@@ -235,3 +245,18 @@ snippet changelist_view "Model admin changelist_view"
 def changelist_view(self, request, extra_context=None):
 	$1
 endsnippet
+
+
+snippet get_success_url "Edit views get_success_url method"
+def get_success_url(self):
+	return reverse()
+endsnippet
+
+
+snippet get_form_class "Method to get form_class for the view"
+def get_form_class(self):
+	return self.form_class
+endsnippet
+
+
+

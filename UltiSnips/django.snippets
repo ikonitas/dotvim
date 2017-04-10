@@ -113,13 +113,13 @@ class $1Admin(admin.ModelAdmin):
 		(
 			'$1', {
 				'fields': (
-					${7}	
+					${7}
 				)
 			}
 		),
 		(
 			'Meta', {
-				'classes': ('collapse',), 
+				'classes': ('collapse',),
 				'fields': (
 					${8}
 				)
@@ -142,7 +142,7 @@ class $1CreateView(CreateView):
 
 	def form_valid(self, form):
 		messages.success(
-			self.request, 
+			self.request,
 			'The {object} was added successfully. You may edit it again below.'.format(
 				object=form.instance
 			)
@@ -215,7 +215,7 @@ class Command(BaseCommand):
 	help = ''
 
 	def handle(self, *args, **options):
-		
+
 		self.stdout.write(self.style.MIGRATE_SUCCESS('Successfully done.'))
 endsnippet
 
@@ -259,4 +259,21 @@ def get_form_class(self):
 endsnippet
 
 
+snippet get_urls "Admin method to get_urls"
+def get_urls(self):
 
+	info = self.model._meta.app_label, self.model._meta.model_name
+
+	urls = super().get_urls()
+	extra_urls = [
+		url(
+			r'^(.+)/$1/$',
+			self.$2,
+			name='{app_label}_{model_name}_$1'.format(
+				app_label=info[0],
+				model_name=info[1]
+			),
+		)
+	]
+	return extra_urls + urls
+endsnippet

@@ -252,13 +252,7 @@ au FileType html,htmldjango setlocal shiftwidth=2 tabstop=2 softtabstop=2
 au FileType python setlocal expandtab smarttab shiftwidth=4 tabstop=4 textwidth=99 softtabstop=4 colorcolumn=99
 au FileType python set ft=python.django
 
-"Remove trailing whitespaces only after some text."
-autocmd BufWritePre *.css :%s/\S\zs\s\+$//e | :retab | :%s/\s\+$//e
-autocmd BufWritePre *.less :%s/\S\zs\s\+$//e | :%s/\s\+$//e
-autocmd BufWritePre *.scss :%s/\S\zs\s\+$//e | :%s/\s\+$//e
-autocmd BufWritePre *.py :%s/\S\zs\s\+$//e | :%s/\s\+$//e
-autocmd BufWritePre *.html :%s/\S\zs\s\+$//e | :retab | :%s/\s\+$//e
-autocmd BufWritePre *.js :%s/\S\zs\s\+$//e | :%s/\s\+$//e
+autocmd BufWritePre *.* :%s/\S\zs\s\+$//e | :retab | :%s/\s\+$//e
 
 if hostname() == "embor"
     autocmd FileType xhtml,xml,css,less,javascript setlocal expandtab shiftwidth=4 tabstop=4 softtabstop=4

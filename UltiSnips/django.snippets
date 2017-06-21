@@ -297,3 +297,24 @@ endsnippet
 snippet successfully_sent "Message for successfully send email"
 You have successfully sent the email
 endsnippet
+
+
+snippet updated_by_admin "Add save_model method update who  created or updated the obj"
+def save_model(self, request, obj, form, change):
+	""" Assign user to the object created_by and updated_by. """
+	if obj.id and change:
+		obj.updated_by = request.user
+	if not obj.id:
+		obj.created_by = request.user
+		obj.updated_by = request.user
+	super().save_model(request, obj, form, change)
+endsnippet
+
+
+snippet has_add_permission_count "Only one object can be added"
+def has_add_permission(self, request):
+    """Just one template can be added."""
+    if self.model.objects.count() > 0:
+        return False
+    return super().has_add_permission(request)
+endsnippet

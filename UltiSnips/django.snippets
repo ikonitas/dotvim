@@ -275,7 +275,7 @@ def get_urls(self):
 	extra_urls = [
 		url(
 			r'^(\d+)/$1/$',
-			self.admin_site.admin_view$2,
+			self.admin_site.admin_view(self.$2),
 			name='{app_label}_{model_name}_$1'.format(
 				app_label=app_label,
 				model_name=model_name,

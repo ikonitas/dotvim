@@ -28,10 +28,11 @@ Plugin 'SirVer/ultisnips'
 Plugin 'chip/vim-fat-finger'
 Plugin 'tpope/vim-ragtag'
 Plugin 'fisadev/vim-isort'
+Plugin 'editorconfig/editorconfig-vim'
 
-call vundle#end() 
+call vundle#end()
 
-filetype plugin indent on 
+filetype plugin indent on
 
 " Map Leader
 let mapleader="\<Space>"
@@ -177,65 +178,65 @@ syntax on
 """"""""
 " SETS "
 """"""""
-set autoindent              	      " always set autoindenting on
+set autoindent                        " always set autoindenting on
 set autoread                          " Automatically reload files changed on disk.
-set backspace=2             	      " Allow backspacing over autoindent, EOL, and BOL
+set backspace=2                       " Allow backspacing over autoindent, EOL, and BOL
 set breakindent
-set clipboard=unnamedplus     	      " Settings clipboard to be able copy/paste
+set clipboard=unnamedplus             " Settings clipboard to be able copy/paste
 set completeopt-=preview              " Remove preview window
-set confirm                 	      " Y-N-C prompt if closing with unsaved changes.
-set cursorline              	      " have a line indicate the cursor location
+set confirm                           " Y-N-C prompt if closing with unsaved changes.
+set cursorline                        " have a line indicate the cursor location
 set dir=/tmp
 set encoding=utf-8                    " The encoding displayed.
-set expandtab               	      " Use spaces, not tabs, for autoindent/tab key.
-set ffs=unix,dos,mac        	      " Try recognizing dos, unix, and mac line endings.
+set expandtab                         " Use spaces, not tabs, for autoindent/tab key.
+set ffs=unix,dos,mac                  " Try recognizing dos, unix, and mac line endings.
 set fileencoding=utf-8                " The encoding written to file.
-set foldenable                        " Enable Fold 
-set foldcolumn=0            	      " show the fold column
-set foldlevel=99            	      " don't fold by default
-set foldlevelstart=10            	  " don't fold by default
-set foldmethod=indent       	      " allow us to fold on indents
+set foldenable                        " Enable Fold
+set foldcolumn=0                      " show the fold column
+set foldlevel=99                      " don't fold by default
+set foldlevelstart=10                 " don't fold by default
+set foldmethod=indent                 " allow us to fold on indents
 set hidden                            " Hides buffers instead of closing them
-set hlsearch                	      " Highlight searches by default.
-set ignorecase              	      " Default to using case insensitive searches,
-set incsearch               	      " Incrementally search while typing a /regex
-set laststatus=2            	      " Always show statusline, even if only 1 window.
-set linebreak               	      " don't wrap textin the middle of a word
-set ls=2                    	      " allways show status line
-set matchpairs+=<:>         	      " show matching <> (html mainly) as well
-set modeline                	      " Allow vim options to be embedded in files;
-set modelines=5             	      " they must be within the first or last 5 lines.
-set noautochdir                 	  " Your working directory is always the same as the file you are editing.
-set noautoread              	      " Don't automatically re-read changed files.
-set noautowrite             	      " Never write a file unless I request it.
-set noautowriteall          	      " NEVER.
+set hlsearch                          " Highlight searches by default.
+set ignorecase                        " Default to using case insensitive searches,
+set incsearch                         " Incrementally search while typing a /regex
+set laststatus=2                      " Always show statusline, even if only 1 window.
+set linebreak                         " don't wrap textin the middle of a word
+set ls=2                              " allways show status line
+set matchpairs+=<:>                   " show matching <> (html mainly) as well
+set modeline                          " Allow vim options to be embedded in files;
+set modelines=5                       " they must be within the first or last 5 lines.
+set noautochdir                       " Your working directory is always the same as the file you are editing.
+set noautoread                        " Don't automatically re-read changed files.
+set noautowrite                       " Never write a file unless I request it.
+set noautowriteall                    " NEVER.
 set nobackup                          " Disable stupid backups and swap files
-set nostartofline           	      " Avoid moving cursor to BOL when jumping around
+set nostartofline                     " Avoid moving cursor to BOL when jumping around
 set noswapfile
 set nowritebackup
-set number        	      	      " Display line number
+set number                        " Display line number
 set relativenumber
-set numberwidth=1             	      " using only 1 column (and 1 space) while possible
-set report=0                	      " : commands always print changed line count.
-set ruler                   	      " show the cursor position all the time
-set scrolloff=3             	      " Keep 3 context lines above and below the cursor
-set shiftround              	      " rounds indent to a multiple of shiftwidth
-set shiftwidth=4            	      " but an indent level is 2 spaces wide.
-set shortmess+=a            	      " Use [+]/[RO]/[w] for modified/readonly/written.
-set showcmd                 	      " Show incomplete normal mode commands as I type.
-set showmatch               	      " Briefly jump to a paren once it's balanced
-set smartcase               	      " unless uppercase letters are used in the regex.
-set smartindent             	      " use smart indent if there is no indent file
-set smarttab                	      " Handle tabs more intelligently
-set softtabstop=4           	      " <BS> over an autoindent deletes both spaces.
+set numberwidth=1                     " using only 1 column (and 1 space) while possible
+set report=0                          " : commands always print changed line count.
+set ruler                             " show the cursor position all the time
+set scrolloff=3                       " Keep 3 context lines above and below the cursor
+set shiftround                        " rounds indent to a multiple of shiftwidth
+set shiftwidth=4                      " but an indent level is 2 spaces wide.
+set shortmess+=a                      " Use [+]/[RO]/[w] for modified/readonly/written.
+set showcmd                           " Show incomplete normal mode commands as I type.
+set showmatch                         " Briefly jump to a paren once it's balanced
+set smartcase                         " unless uppercase letters are used in the regex.
+set smartindent                       " use smart indent if there is no indent file
+set smarttab                          " Handle tabs more intelligently
+set softtabstop=4                     " <BS> over an autoindent deletes both spaces.
 set swapfile
-set t_Co=256                  	      " User 256 Colors
-set tabstop=4               	      " <tab> inserts 4 spaces
-set title                     	      " show title in console title bar
-set vb t_vb=                	      " Disable all bells.  I hate ringing/flashing.
-set virtualedit=block       	      " Let cursor move past the last char in <C-v> mode
+set t_Co=256                          " User 256 Colors
+set tabstop=4                         " <tab> inserts 4 spaces
+set title                             " show title in console title bar
+set vb t_vb=                          " Disable all bells.  I hate ringing/flashing.
+set virtualedit=block                 " Let cursor move past the last char in <C-v> mode
 set wildignore+=*.o,*.obj,.git,*.pyc  " Ignore these files when completing
-set wildmenu                  	      " Menu completion in command mode on <Tab>
+set wildmenu                          " Menu completion in command mode on <Tab>
 set wildmode=longest,full             " <Tab> cycles between all matching choices.
 set wrapmargin=0
 
@@ -376,14 +377,14 @@ let g:multi_cursor_quit_key='<Esc>'
 
 
 function! Rack (args)
-let l:gitDir = system("git rev-parse --show-toplevel")  
+let l:gitDir = system("git rev-parse --show-toplevel")
 if l:gitDir =~ "Not a git repository"
-    execute 'Ack ' . a:args      
-    return  
-endif  
+    execute 'Ack ' . a:args
+    return
+endif
 execute 'Ack ' . a:args  .' ' . l:gitDir
 endfunction
-command! -bang -nargs=* -complete=file Rack call Rack(<q-args>) 
+command! -bang -nargs=* -complete=file Rack call Rack(<q-args>)
 
 let g:vim_isort_map = '<C-i>'
 

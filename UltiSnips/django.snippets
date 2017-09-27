@@ -124,23 +124,15 @@ class $1Admin(admin.ModelAdmin):
 	readonly_fields = ('${4}',)
 	search_fields = ['${5}']
 	date_hierarchy = ${6}
-	fieldsets = (
-		(
-			'$1', {
-				'fields': (
-					${7}
-				)
-			}
-		),
-		(
-			'Meta', {
-				'classes': ('collapse',),
-				'fields': (
-					${8}
-				)
-			}
-		),
-	)
+	fieldsets = [
+		('$1', {
+			'fields': (${7}),
+		}),
+		('Meta', {
+			'classes': ('collapse',),
+			'fields': (${8}),
+		}),
+	]
 endsnippet
 
 
@@ -313,8 +305,23 @@ endsnippet
 
 snippet has_add_permission_count "Only one object can be added"
 def has_add_permission(self, request):
-    """Just one template can be added."""
-    if self.model.objects.count() > 0:
-        return False
-    return super().has_add_permission(request)
+	"""Just one template can be added."""
+	if self.model.objects.count() > 0:
+		return False
+	return super().has_add_permission(request)
+endsnippet
+
+
+snippet factory_model "Add factory model"
+import factory
+
+class ${1:MODELANME}Factory(factory.django.DjangoModelFactory):
+	title = factory.Faker('job')
+	logo = factory.django.ImageField(color='blue')
+	slug = factory.LazyAttribute(lambda a: slugify(a.name))
+	theme = factory.SubFactory(ThemeFactory)
+	many_to_many = factory.RelatedFactory(manytomayFactory)
+
+	class Meta:
+		model = $1
 endsnippet

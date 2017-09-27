@@ -282,8 +282,8 @@ def get_urls(self):
 	urls = super().get_urls()
 	extra_urls = [
 		url(
-			r'^(\d+)/$0/$',
-			self.$2,
+			r'^(\d+)/$1/$',
+			self.admin_site.admin_view$2,
 			name='{app_label}_{model_name}_$1'.format(
 				app_label=app_label,
 				model_name=model_name,

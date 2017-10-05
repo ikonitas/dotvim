@@ -306,21 +306,7 @@ let g:UltiSnipsExpandTrigger="<c-j>"
 let g:UltiSnipsListSnippets="<f4>"
 let g:UltiSnipsSnippetsDir = "~/.vim/UltiSnips"
 
-" py << EOF
-" import os
-" import sys
-" if 'VIRTUAL_ENV' in os.environ:
-"   project_base_dir = os.environ['VIRTUAL_ENV']
-"   activate_this = os.path.join(project_base_dir, 'bin/activate_this.py')
-"   execfile(activate_this, dict(__file__=activate_this))
-"   if '3.5' in sys.version():
-"     let g:UltiSnipsUsePythonVersion = 3
-"   else:
-"     let g:UltiSnipsUsePythonVersion = 3
-" EOF
-
 nnoremap <F5> :YcmForceCompileAndDiagnostics<CR>:doautocmd FileType<CR>
-
 
 let g:ycm_collect_identifiers_from_tags_files = 0
 let g:ycm_register_as_syntastic_checker = 1

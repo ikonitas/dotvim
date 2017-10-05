@@ -327,8 +327,38 @@ class ${1:MODELANME}Factory(factory.django.DjangoModelFactory):
 endsnippet
 
 snippet get_form_kwargs "Get form kwargs method"
-
 def get_form_kwargs(self):
 	kwargs = super().get_form_kwargs()
 	return kwargs
+endsnippet
+
+snippet admin_view "Add admin view example"
+def import_persons(self, request):
+	opts = self.model._meta
+	app_label = opts.app_label
+	form = ImportPersonForm(request.POST or None, request.FILES or None)
+	if form.is_valid():
+		pass
+
+	context = self.admin_site.each_context(request)
+	adminform = helpers.AdminForm(
+		form=form,
+		fieldsets=[(None, {'fields': form.fields})],
+		prepopulated_fields={},
+		model_admin=self,
+	)
+	context.update({
+		'adminform': adminform,
+		'form': form,
+		'has_add_permission': self.has_add_permission(request),
+		'has_change_permission': self.has_change_permission(request),
+		'opts': opts,
+	})
+	return TemplateResponse(
+		request,
+		'admin/{app_label}/{model_name}/import.html'.format(
+			app_label=app_label, model_name=opts.model_name
+		),
+		context,
+	)
 endsnippet

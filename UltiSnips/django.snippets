@@ -325,3 +325,10 @@ class ${1:MODELANME}Factory(factory.django.DjangoModelFactory):
 	class Meta:
 		model = $1
 endsnippet
+
+snippet get_form_kwargs "Get form kwargs method"
+
+def get_form_kwargs(self):
+	kwargs = super().get_form_kwargs()
+	return kwargs
+endsnippet

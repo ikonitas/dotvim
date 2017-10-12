@@ -76,6 +76,21 @@ from django.core.exceptions import PermissionDenied
 endsnippet
 
 
+snippet import_templateresponse "Import TemplateResponse" b
+from django.template.response import TemplateResponse
+endsnippet
+
+
+snippet import_helpers "Import Helpers" b
+from django.contrib.admin import helpers
+endsnippet
+
+
+snippet import_urls "Import URLS" b
+from django.conf.urls import include, url
+endsnippet
+
+
 snippet created_at "DateTimeFiled" b
 created_at = models.DateTimeField(auto_now_add=True)
 endsnippet
@@ -333,7 +348,7 @@ def get_form_kwargs(self):
 endsnippet
 
 snippet admin_view "Add admin view example"
-def import_persons(self, request):
+def ${1}(self, request):
 	opts = self.model._meta
 	app_label = opts.app_label
 	form = ImportPersonForm(request.POST or None, request.FILES or None)

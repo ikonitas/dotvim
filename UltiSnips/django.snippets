@@ -377,3 +377,32 @@ def ${1}(self, request):
 		context,
 	)
 endsnippet
+
+
+snippet webtest "Add simple webtest"
+from django.urls import reverse
+
+import factory
+from django_webtest import WebTest
+
+from applications.models import Application
+
+
+class ApplicationCreateTestView(WebTest):
+
+	def test_application_create(self):
+		form = self.app.get(reverse('applications:application-create')).form
+
+		email = factory.Faker('email').generate({})
+		form['first_name'] = factory.Faker('first_name').generate({})
+		form['last_name'] = factory.Faker('last_name').generate({})
+		form['email'] = email
+		form['password1'] = 'test123'
+		form['password2'] = 'test123'
+		response = form.submit()
+
+		response = form.submit()
+
+		self.assertEqual(response.status_code, 302)
+		self.assertTrue(Application.objects.filter(email=email).exists())
+endsnippet

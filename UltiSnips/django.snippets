@@ -412,3 +412,29 @@ snippet readonly_admin "Admin all fields readonly"
 def get_readonly_fields(self, request, obj=None):
 	return [field.name for field in self.model._meta.fields]
 endsnippet
+
+snippet import_csv_management "Management commands to import csv"
+import argparse
+import csv
+
+from django.core.management.base import BaseCommand
+
+from constituencies.models import Constituency
+
+
+class Command(BaseCommand):
+	help = 'Import twitter username'
+
+	def add_arguments(self, parser):
+		parser.add_argument('--file', type=argparse.FileType('r'), help='csv file location')
+
+	def handle(self, *args, **options):
+		reader = csv.reader(options['file'])
+		for row in reader:
+			email = row[4]
+			twitter_username = row[5]
+			if Constituency.objects.filter(email_address=email).exists() and twitter_username:
+				for constituency in Constituency.objects.filter(email_address=email):
+					constituency.twitter_username = twitter_username
+					constituency.save()
+endsnippet

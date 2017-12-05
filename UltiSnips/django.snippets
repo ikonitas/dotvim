@@ -91,6 +91,10 @@ from django.conf.urls import include, url
 endsnippet
 
 
+snippet import_formataddr
+from email.utils import formataddr
+endsnippet
+
 snippet created_at "DateTimeFiled" b
 created_at = models.DateTimeField(auto_now_add=True)
 endsnippet
@@ -437,4 +441,27 @@ class Command(BaseCommand):
 				for constituency in Constituency.objects.filter(email_address=email):
 					constituency.twitter_username = twitter_username
 					constituency.save()
+endsnippet
+
+
+snippet get_full_url "Full url snippet"
+def get_full_url(self):
+	current_site = Site.objects.get_current()
+	full_url = '{}://{}{}'.format(
+		settings.URL_SCHEME, current_site.domain, self.get_absolute_absolute_url()
+	)
+	return full_url
+endsnippet
+
+
+snippet emailmessage "Emailmesssage"
+email = mail.EmailMessage(
+	subject=self.subject,
+	body=self.message,
+	to=[self.email_address],
+	reply_to=[formataddr((self.from_name, self.from_email))],
+	headers={'From': formataddr((self.from_name, self.from_email))},
+	connection=connection,
+)
+email.send()
 endsnippet

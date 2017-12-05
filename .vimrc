@@ -29,6 +29,8 @@ Plugin 'chip/vim-fat-finger'
 Plugin 'tpope/vim-ragtag'
 Plugin 'fisadev/vim-isort'
 Plugin 'editorconfig/editorconfig-vim'
+Plugin 'junegunn/fzf.vim'
+
 
 call vundle#end()
 

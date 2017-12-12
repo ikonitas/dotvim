@@ -448,7 +448,7 @@ snippet get_full_url "Full url snippet"
 def get_full_url(self):
 	current_site = Site.objects.get_current()
 	full_url = '{}://{}{}'.format(
-		settings.URL_SCHEME, current_site.domain, self.get_absolute_absolute_url()
+		settings.URL_SCHEME, current_site.domain, self.get_absolute_url()
 	)
 	return full_url
 endsnippet

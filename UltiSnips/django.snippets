@@ -96,7 +96,7 @@ from email.utils import formataddr
 endsnippet
 
 snippet created_at "DateTimeFiled" b
-created_at = models.DateTimeField(auto_now_add=True)
+created_at = models.DateTimeField(default=timezone.now)
 endsnippet
 
 

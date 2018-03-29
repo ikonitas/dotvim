@@ -42,7 +42,7 @@ endsnippet
 
 
 snippet import_reverse_lazy "Import reverse_lazy" b
-from django.core.urlresolvers import reverse_lazy
+from django.urls import reverse_lazy
 endsnippet
 
 
@@ -94,6 +94,12 @@ endsnippet
 snippet import_formataddr
 from email.utils import formataddr
 endsnippet
+
+
+snippet import_slugify
+from django.utils.text import slugify
+endsnippet
+
 
 snippet created_at "DateTimeFiled" b
 created_at = models.DateTimeField(default=timezone.now)
